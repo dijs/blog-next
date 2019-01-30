@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { collect } from 'react-recollect';
+import posts from './posts';
+import PostItem from './components/PostItem';
+import Post from './components/Post';
+import { back } from './store/updaters';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+function App({ store: { activePostIndex } }) {
+  return (
+    <div>
+      <div className="header">
+        <span>Blog.</span>
+        <div className="back" onClick={() => back()}>
+          Back (implement with history)
+        </div>
       </div>
-    );
-  }
+      {activePostIndex !== undefined ? (
+        <Post {...posts[activePostIndex]} />
+      ) : (
+        <div className="posts">{posts.map(PostItem)}</div>
+      )}
+    </div>
+  );
 }
 
-export default App;
+export default collect(App);
