@@ -1,26 +1,34 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-// Try creating proxy for react components
+
+// Hacky fun test
+const div = new Proxy(
+  {},
+  {
+    get: function(obj, prop) {
+      return props => <div className={prop} {...props} />;
+    }
+  }
+);
 
 export default function Post({ metadata: { title }, content }) {
   return (
     <div>
-      <div className="post">
-        <div className="info">
-          <div className="title">{title}</div>
-          <div className="date">Jan 30, 2019</div>
-          <div className="social">Social Stuff Here...</div>
-        </div>
-        <div
-          className="image"
+      <div.post>
+        <div.info>
+          <div.title>{title}</div.title>
+          <div.date>Jan 30, 2019</div.date>
+          <div.social>Social Stuff Here...</div.social>
+        </div.info>
+        <div.image
           style={{
             backgroundImage: `url('//picsum.photos/200?random&t=${title}')`
           }}
         />
-        <div className="content">
+        <div.content>
           <ReactMarkdown source={content} escapeHtml={false} />
-        </div>
-      </div>
+        </div.content>
+      </div.post>
     </div>
   );
 }
