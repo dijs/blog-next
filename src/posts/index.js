@@ -1,6 +1,6 @@
 import raw from 'raw.macro';
 import metadataParser from 'parse-md';
-import moment from 'moment';
+import dateFns from 'date-fns';
 
 export default [
 	raw('ares-game-part-1.md'),
@@ -30,12 +30,16 @@ export default [
 ]
 	.map(source => metadataParser(source))
 	.filter(({ metadata: { published } }) => published)
-	.sort((a, b) => +moment(b.metadata.date) - +moment(a.metadata.date))
+	.map(post => {
+		post.metadata.date = new Date(post.metadata.date);
+		return post;
+	})
+	.sort((a, b) => +b.metadata.date - +a.metadata.date)
 	.map(post => {
 		if (!post.metadata.image) post.metadata.image = '//picsum.photos/300';
 		if (!post.metadata.blurb)
 			post.metadata.blurb =
 				'Dolore nisi eiusmod adipisicing sint quis aliqua dolor cillum et sit aliqua.';
-		post.metadata.date = moment(post.metadata.date).format('MMM D, YYYY');
+		post.metadata.date = dateFns.format(post.metadata.date, 'MMM D, YYYY');
 		return post;
 	});

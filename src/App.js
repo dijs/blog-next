@@ -1,17 +1,16 @@
 import React from 'react';
-import { collect } from 'react-recollect';
 import classnames from 'classnames';
 import posts from './posts';
 import PostItem from './components/PostItem';
 import Post from './components/Post';
-import { back } from './store/updaters';
+import withStore from './components/withStore';
 
-function App({ store: { activePostIndex } }) {
+function App({ activePostIndex, back, setActivePost }) {
   return (
     <div>
       <div className="header">
         <i
-          class={classnames('fas fa-caret-left', {
+          className={classnames('fas fa-caret-left', {
             active: activePostIndex !== undefined
           })}
           onClick={() => back()}
@@ -21,10 +20,18 @@ function App({ store: { activePostIndex } }) {
       {activePostIndex !== undefined ? (
         <Post {...posts[activePostIndex]} />
       ) : (
-        <div className="posts">{posts.map(PostItem)}</div>
+        <div className="posts">
+          {posts.map((post, index) => (
+            <PostItem
+              key={index}
+              {...post}
+              setActivePost={() => setActivePost(index)}
+            />
+          ))}
+        </div>
       )}
     </div>
   );
 }
 
-export default collect(App);
+export default withStore(App);

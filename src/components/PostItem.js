@@ -1,12 +1,11 @@
 import React from 'react';
-import { setActivePost } from '../store/updaters';
 
-export default function PostItem(
-  { metadata: { title, image, blurb, date } },
-  index
-) {
+export default function PostItem({
+  metadata: { title, image, blurb, date },
+  setActivePost
+}) {
   return (
-    <div className="post-item" onClick={() => setActivePost(index)}>
+    <div className="post-item" onClick={setActivePost}>
       <div
         className="image"
         style={{
