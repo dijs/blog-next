@@ -1,34 +1,24 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-// Hacky fun test
-const div = new Proxy(
-  {},
-  {
-    get: function(obj, prop) {
-      return props => <div className={prop} {...props} />;
-    }
-  }
-);
-
-export default function Post({ metadata: { title }, content }) {
+export default function Post({ metadata: { title, image, date }, content }) {
   return (
     <div>
-      <div.post>
-        <div.info>
-          <div.title>{title}</div.title>
-          <div.date>Jan 30, 2019</div.date>
-          <div.social>Social Stuff Here...</div.social>
-        </div.info>
-        <div.image
+      <div className="post">
+        <div className="info">
+          <div className="title">{title}</div>
+          <div className="date">{date}</div>
+        </div>
+        <div
+          className="image"
           style={{
-            backgroundImage: `url('//picsum.photos/200?random&t=${title}')`
+            backgroundImage: `url('${image}')`
           }}
         />
-        <div.content>
+        <div className="content">
           <ReactMarkdown source={content} escapeHtml={false} />
-        </div.content>
-      </div.post>
+        </div>
+      </div>
     </div>
   );
 }

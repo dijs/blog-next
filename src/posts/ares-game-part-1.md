@@ -6,9 +6,9 @@ tags: [game, mmo, rpg, development]
 date: 3/1/2018
 ---
 
-#### Intro
+### Intro
 
-This is the start of what I hope to be a long story. 
+This is the start of what I hope to be a long story.
 
 I have been wanting to make a proper open world mmo rpg for a very long time. I have started two or three times in the past, but after a few weeks of work and failures, the projects fizzled.
 
@@ -22,7 +22,7 @@ Because this game will be very open, I am working on the different features of t
 
 I want to start with the difficult parts first, then add in the details.
 
-#### Parts of the game I have created so far:
+### Parts of the game I have created so far:
 
 - Isometric 2D World Rendering (multiple layers)
 - Simple creature/character rendering with movement animation
@@ -48,7 +48,7 @@ I think with all these things working together, I can testing with other people 
 
 Like I said, no story or theme yet, but I wanted to share the main features that distinguish. Yes, I know none of these ideas are unique, but I hope used together properly, they will make an entertaining mmorpg.
 
-#### Features:
+### Features:
 
 - Open world (walk ANYWHERE, I want to be able to get lost in the game 👍)
 - Attack almost anything (not sure on this one yet. I want it to be realistic here, but could cause real problems for eary players. Maybe make this a option a player can TURN ON PvP, or a designated AREA)

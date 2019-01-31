@@ -1,5 +1,6 @@
 import raw from 'raw.macro';
 import metadataParser from 'parse-md';
+import moment from 'moment';
 
 export default [
 	raw('ares-game-part-1.md'),
@@ -28,4 +29,12 @@ export default [
 	raw('the-middleman.md')
 ]
 	.map(source => metadataParser(source))
-	.filter(({ metadata: { published } }) => published);
+	.filter(({ metadata: { published } }) => published)
+	.map(post => {
+		if (!post.metadata.image) post.metadata.image = '//picsum.photos/300';
+		if (!post.metadata.blurb)
+			post.metadata.blurb =
+				'Dolore nisi eiusmod adipisicing sint quis aliqua dolor cillum et sit aliqua.';
+		post.metadata.date = moment(post.metadata.date).format('MMM D, YYYY');
+		return post;
+	});

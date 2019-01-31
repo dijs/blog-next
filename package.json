@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "markdown-yaml-metadata-parser": "^1.1.1",
+    "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "parse-md": "^1.0.3",
     "raw.macro": "^0.2.0",
