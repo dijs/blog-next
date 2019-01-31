@@ -17,6 +17,8 @@ body {
 	i {
 		margin-right: 10px;
 		font-size: 35px;
+		text-decoration: none;
+		color: white;
 	}
 }
 
@@ -32,6 +34,8 @@ body {
 	padding: 40px 80px;
 }
 .post-item {
+	color: inherit;
+	text-decoration: none;
 	width: calc(33.33% - 10px * 2 * 3);
 	margin: 10px;
 	.image {

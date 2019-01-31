@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function PostItem({
   metadata: { title, image, blurb, date },
-  setActivePost
+  slug,
+  path
 }) {
   return (
-    <div className="post-item" onClick={setActivePost}>
+    <Link className="post-item" to={path}>
       <div
         className="image"
         style={{
@@ -15,6 +17,6 @@ export default function PostItem({
       <div className="title">{title}</div>
       <div className="blurb">{blurb}</div>
       <div className="date">{date}</div>
-    </div>
+    </Link>
   );
 }

@@ -1,37 +1,30 @@
 import React from 'react';
-import classnames from 'classnames';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import posts from './posts';
-import PostItem from './components/PostItem';
 import Post from './components/Post';
-import withStore from './components/withStore';
+import Home from './components/Home';
 
-function App({ activePostIndex, back, setActivePost }) {
+function App() {
+  const routes = posts.map(post => {
+    return {
+      title: post.metadata.title,
+      path: post.path,
+      component: () => <Post {...post} />,
+      exact: true
+    };
+  });
   return (
-    <div>
-      <div className="header">
-        <i
-          className={classnames('fas fa-caret-left', {
-            active: activePostIndex !== undefined
-          })}
-          onClick={() => back()}
-        />
-        Blog.
-      </div>
-      {activePostIndex !== undefined ? (
-        <Post {...posts[activePostIndex]} />
-      ) : (
-        <div className="posts">
-          {posts.map((post, index) => (
-            <PostItem
-              key={index}
-              {...post}
-              setActivePost={() => setActivePost(index)}
-            />
+    <Router>
+      <div>
+        <Switch>
+          {routes.map((route, i) => (
+            <Route key={i} {...route} />
           ))}
-        </div>
-      )}
-    </div>
+          <Route component={Home} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default withStore(App);
+export default App;

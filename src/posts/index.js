@@ -1,5 +1,6 @@
 import raw from 'raw.macro';
 import metadataParser from 'parse-md';
+import slug from 'slug';
 import dateFns from 'date-fns';
 
 export default [
@@ -35,11 +36,14 @@ export default [
 		return post;
 	})
 	.sort((a, b) => +b.metadata.date - +a.metadata.date)
-	.map(post => {
+	.map((post, index) => {
 		if (!post.metadata.image) post.metadata.image = '//picsum.photos/300';
 		if (!post.metadata.blurb)
 			post.metadata.blurb =
 				'Dolore nisi eiusmod adipisicing sint quis aliqua dolor cillum et sit aliqua.';
 		post.metadata.date = dateFns.format(post.metadata.date, 'MMM D, YYYY');
+		post.slug = slug(post.metadata.title);
+		post.index = index;
+		post.path = `/post/${post.slug}`;
 		return post;
 	});

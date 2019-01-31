@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import Back from './Back';
 
 export default function Post({ metadata: { title, image, date }, content }) {
   return (
     <div>
+      <div className="header">
+        <Back active />
+        Blog.
+      </div>
       <div className="post">
         <div className="info">
           <div className="title">{title}</div>
