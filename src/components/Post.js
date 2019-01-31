@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import Helmet from 'react-helmet';
 import Back from './Back';
 
 export default function Post({ metadata: { title, image, date }, content }) {
   return (
     <div>
+      <Helmet title={title} />
       <div className="header">
         <Back active />
         Blog.
