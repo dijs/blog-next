@@ -1,6 +1,6 @@
 ---
 published: true
-title: Self Learning Game Mark 1
+title: Self Learning Game
 layout: post
 date: 08/29/2017
 ---

@@ -1,6 +1,6 @@
 ---
 published: true
-title: Ares Game | Part 1
+title: Ares Game
 layout: post
 tags: [game, mmo, rpg, development]
 date: 3/1/2018

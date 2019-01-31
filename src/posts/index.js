@@ -30,6 +30,7 @@ export default [
 ]
 	.map(source => metadataParser(source))
 	.filter(({ metadata: { published } }) => published)
+	.sort((a, b) => +moment(b.metadata.date) - +moment(a.metadata.date))
 	.map(post => {
 		if (!post.metadata.image) post.metadata.image = '//picsum.photos/300';
 		if (!post.metadata.blurb)

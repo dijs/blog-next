@@ -1,6 +1,6 @@
 ---
 published: true
-title: Vacbot Part 1
+title: Vacbot
 layout: post
 date: 3/27/2016
 ---
@@ -27,4 +27,3 @@ Not sure if this will work, but I will find out when the parts arrive!
 
 There is a lot more to this than I thought, but things are slowly coming together.
 
-Next part coming soon.
