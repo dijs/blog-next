@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.6",
     "markdown-yaml-metadata-parser": "^1.1.1",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",

@@ -8,10 +8,16 @@ body {
 }
 
 .header {
+	color: white;
 	padding: 96px 64px;
 	background-color: rgba(0, 173, 255, 1);
-	color: white;
 	font-size: 32px;
+	display: flex;
+	align-items: center;
+	i {
+		margin-right: 10px;
+		font-size: 35px;
+	}
 }
 
 .back {
@@ -118,6 +124,16 @@ body {
 }
 
 // Animations
+
+.header {
+	i {
+		transition: 0.3s opacity;
+		opacity: 0;
+		&.active {
+			opacity: 1;
+		}
+	}
+}
 
 .post-item {
 	transition: 0.3s transform;
