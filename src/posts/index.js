@@ -37,7 +37,6 @@ export default [
 	})
 	.sort((a, b) => +b.metadata.date - +a.metadata.date)
 	.map((post, index) => {
-		if (!post.metadata.image) post.metadata.image = '//picsum.photos/300';
 		if (!post.metadata.blurb)
 			post.metadata.blurb =
 				'Dolore nisi eiusmod adipisicing sint quis aliqua dolor cillum et sit aliqua.';

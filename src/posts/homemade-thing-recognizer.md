@@ -1,5 +1,6 @@
 ---
 published: true
+image: 'https://cdn.pixabay.com/photo/2018/03/31/06/31/dog-3277416__340.jpg'
 title: Homemade Thing Recognizer
 layout: post
 date: 11/19/2017
@@ -13,11 +14,11 @@ Since moving into our home, I have been trying to find ways of gathering data. T
 
 Recently, I have had a breakthrough in this area.
 
-After noticing that I was *accidentally* storing hundreds of gigabytes of motion detection videos, I realized the treasure this could be!
+After noticing that I was _accidentally_ storing hundreds of gigabytes of motion detection videos, I realized the treasure this could be!
 
 ## Finding the interesting bits
 
-Since I peruse the tech blogs every day, I remembered seeing some new work in the image tagging world. After some searching, I found it again, [YOLO](https://pjreddie.com/darknet/yolo/). After building this library, downloading a previously trained model, and learning a bit of python, I was labeling objects in my videos! 
+Since I peruse the tech blogs every day, I remembered seeing some new work in the image tagging world. After some searching, I found it again, [YOLO](https://pjreddie.com/darknet/yolo/). After building this library, downloading a previously trained model, and learning a bit of python, I was labeling objects in my videos!
 
 At first, I naively thought there was no way this could work for my use case. Each tag took around 30 seconds to calculate and I was potentially going to have thousands of frames thrown at this thing.
 
@@ -33,7 +34,7 @@ I quickly wrote a simple python server that accepted an POST request with an ima
 
 ## Tagging
 
-Just for fun, I whipped up a quick react app which allowed me to *swipe* through all my tagged objects and give them **real** labels.
+Just for fun, I whipped up a quick react app which allowed me to _swipe_ through all my tagged objects and give them **real** labels.
 
 ## Personal Recognition
 

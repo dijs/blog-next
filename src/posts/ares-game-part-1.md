@@ -1,6 +1,7 @@
 ---
 published: true
 title: Ares Game
+image: 'https://cdn.pixabay.com/photo/2019/01/24/11/31/structure-3952312_960_720.jpg'
 layout: post
 tags: [game, mmo, rpg, development]
 date: 3/1/2018

@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import Helmet from 'react-helmet';
 import Header from './Header';
 
-export default function Post({ metadata: { title, image, date }, content }) {
+export default function Post({ metadata: { title, date }, content }) {
   return (
     <div>
       <Helmet title={title} />
@@ -13,12 +13,6 @@ export default function Post({ metadata: { title, image, date }, content }) {
           <div className="title">{title}</div>
           <div className="date">{date}</div>
         </div>
-        <div
-          className="image"
-          style={{
-            backgroundImage: `url('${image}')`
-          }}
-        />
         <div className="content">
           <ReactMarkdown source={content} escapeHtml={false} />
         </div>
