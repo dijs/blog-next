@@ -9,11 +9,31 @@ body {
 
 .header {
 	color: white;
-	padding: 96px 64px;
-	background-color: rgba(0, 173, 255, 1);
+	padding: 24px 24px;
 	font-size: 32px;
 	display: flex;
 	align-items: center;
+	text-decoration: none;
+
+	background: #12c2e9; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#f64f59,
+		#c471ed,
+		#12c2e9
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#f64f59,
+		#c471ed,
+		#12c2e9
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	img {
+		height: 96px;
+		margin-right: 12px;
+	}
+
 	i {
 		margin-right: 10px;
 		font-size: 35px;

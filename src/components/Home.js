@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import posts from '../posts';
 import PostItem from './PostItem';
-import Back from './Back';
+import Header from './Header';
 
 function PostList({ posts }) {
   return (
@@ -18,10 +18,7 @@ export default function Home() {
   return (
     <div>
       <Helmet title="Richard van der Dys | Blog" />
-      <div className="header">
-        <Back />
-        Blog.
-      </div>
+      <Header />
       <PostList posts={posts} />
     </div>
   );
