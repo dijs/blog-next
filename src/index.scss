@@ -15,19 +15,8 @@ body {
 	align-items: center;
 	text-decoration: none;
 
-	background: #12c2e9; /* fallback for old browsers */
-	background: -webkit-linear-gradient(
-		to right,
-		#f64f59,
-		#c471ed,
-		#12c2e9
-	); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-		to right,
-		#f64f59,
-		#c471ed,
-		#12c2e9
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background-image: linear-gradient(135deg, #ff9d6c 10%, #bb4e75 100%);
+	box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 
 	img {
 		height: 96px;
