@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && node scripts/create-indexes",
     "deploy": "gh-pages -d build -r \"https://github.com/dijs/blog-next.git\""
   },
   "eslintConfig": {
