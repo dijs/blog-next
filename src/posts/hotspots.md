@@ -1,6 +1,7 @@
 ---
 published: true
 title: Hotspots
+blurb: Using git history and some Google research to find problem areas in a codebase
 layout: post
 date: 04/09/2015
 ---
@@ -22,7 +23,7 @@ Now we have our commits related to bug fixes.
 
 In order to score each file, we could just count the number of commits that changed said file. Although, a Google engineer came up with a fancy formula for value-over-time which we will use instead.
 
-![t = 0..1](http://www5a.wolframalpha.com/Calculate/MSP/MSP1961d4c2f091817g7830000162bi7adedi5h9da?MSPStoreType=image/gif&s=11&w=130.&h=39.)
+![t = 0..1](/hotspots-formula.gif)
 
 The commit time is normalized by treating 0 as the first commit time and 1 as the current time. For each commit, this score is added to the changed file's total score.
 

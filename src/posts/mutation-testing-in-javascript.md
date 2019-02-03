@@ -1,10 +1,10 @@
 ---
 published: true
 title: Mutation Testing in Javascript
+blurb: Automatically find bugs in your unit tests by slightly mutating your source code
 layout: post
 date: 03/01/2015
 ---
-### Intro
 
 Mutation testing is hard... But totally worth it!
 

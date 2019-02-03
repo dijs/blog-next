@@ -1,5 +1,7 @@
 ---
+published: true
 title: Starters
+blurb: Start projects with ease
 layout: post
 date: 01/23/2016
 ---

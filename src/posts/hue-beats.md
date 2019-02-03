@@ -1,5 +1,7 @@
 ---
+published: true
 title: Hue Beats
+blurb: Fun with music and Phillips Hue
 layout: post
 date: 1/24/2016
 ---
@@ -19,6 +21,6 @@ Anyways, I got something working even though the timing is a little off.
 Enjoy.
 
 <video width="320" height="240" controls>
-  <source src="../public/videos/hue-beats-480.webm" type="video/webm">
+  <source src="/videos/hue-beats-480.webm" type="video/webm">
 Your browser does not support the video tag.
 </video>

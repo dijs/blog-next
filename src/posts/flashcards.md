@@ -1,6 +1,7 @@
 ---
 published: true
 title: Flashcards
+blurb: Reverse enginnered app data to create my own studying system
 layout: post
 date: 12/31/2014
 ---

@@ -1,9 +1,11 @@
 ---
 published: true
 title: Reading List
+blurb: Creating ebooks of yearly research history
 layout: post
 date: 12/17/2014
 ---
+
 I use [Readability](http://readability.com) to bookmark all the articles I come across every day. Since I do not usually have time to sit down and read during the day, I read at night. Although, I prefer reading physical books to my laptop or phone screen. So, I decided to create books of all my articles per year. They would serve as reading list history and also ease the actual "reading" process.
 
 **Plan**
@@ -27,7 +29,9 @@ I wrote this simple node application to combine the article contents together in
 var readability = require('readability-api');
 var async = require('async');
 
-var articleUrls = require('./readability.json').bookmarks.map(function(article) {
+var articleUrls = require('./readability.json').bookmarks.map(function(
+	article
+) {
 	return article.article__url;
 });
 
@@ -37,19 +41,29 @@ readability.configure({
 
 var parser = new readability.parser();
 
-var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"><title>Reading Material 2014</title></head><body class="container">';
+var html =
+	'<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"><title>Reading Material 2014</title></head><body class="container">';
 
-async.each(articleUrls, function(url, done) {
-	parser.parse(url, function(err, article) {
-		if (article) {
-			html += '<article><h1>' + article.title + '</h1><p>' + article.content + '</p></article>';
-		}
-		done();
-	});
-}, function() {
-	html += '</body></html>';
-	console.log(html);
-});
+async.each(
+	articleUrls,
+	function(url, done) {
+		parser.parse(url, function(err, article) {
+			if (article) {
+				html +=
+					'<article><h1>' +
+					article.title +
+					'</h1><p>' +
+					article.content +
+					'</p></article>';
+			}
+			done();
+		});
+	},
+	function() {
+		html += '</body></html>';
+		console.log(html);
+	}
+);
 ```
 
 After creating and styling the HTML a bit, I used Google Chrome to print the page to PDF for me. I realize this could have been done within the node app also, but Chrome was quicker at the time.

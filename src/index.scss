@@ -31,6 +31,7 @@ body {
 		.b {
 			font-size: 57px;
 			font-family: 'Major Mono Display', monospace;
+			letter-spacing: -4px;
 		}
 	}
 
@@ -38,6 +39,10 @@ body {
 		width: 100%;
 		text-align: right;
 		margin-top: 24px;
+		a,
+		span {
+			vertical-align: middle;
+		}
 		a {
 			display: inline-block;
 			margin-right: 24px;
@@ -59,9 +64,67 @@ body {
 	.avatar {
 		width: 100%;
 		justify-content: left;
-		img {
+		svg {
 			height: 48px;
 			margin-right: 12px;
+			.st0 {
+				fill: #e8e6e7;
+			}
+			.st1 {
+				fill: #fdd7be;
+			}
+			.st2 {
+				stroke: #000000;
+				stroke-linecap: round;
+				stroke-miterlimit: 10;
+			}
+			.st3 {
+				fill: #cbb29b;
+			}
+			.st4 {
+				fill: #e1bda8;
+			}
+			.st5 {
+				opacity: 0.63;
+			}
+			.st6 {
+				fill: #564134;
+			}
+			.st7 {
+				fill: #dc9195;
+			}
+			.st8 {
+				fill: #c9878d;
+			}
+			.st9 {
+				opacity: 0.63;
+				fill: #564134;
+			}
+			.st10 {
+				fill: #434343;
+			}
+			.st11 {
+				opacity: 0.61;
+				fill: #e2b473;
+			}
+			.st12 {
+				opacity: 0.34;
+			}
+			.st13 {
+				fill: #e2b473;
+			}
+			.st14 {
+				opacity: 0.62;
+				fill: #564134;
+			}
+			.st15 {
+				opacity: 0.83;
+				fill: #e1bda8;
+			}
+			.st16 {
+				opacity: 0.83;
+				fill: #ccaa9b;
+			}
 		}
 	}
 
@@ -119,7 +182,7 @@ body {
 	.info {
 		width: 50%;
 		margin: 30px 0;
-		.title {
+		h1 {
 			font-family: Georgia;
 			font-size: 40px;
 			margin: 10px 0;
@@ -215,7 +278,7 @@ body {
 		.info {
 			width: 90%;
 			margin: 30px 0;
-			.title {
+			h1 {
 				font-size: 40px;
 				margin: 10px 0;
 			}

@@ -1,6 +1,7 @@
 ---
 published: true
 title: Yet Another Container/Presenter Pattern
+blurb: Use another component layer to transform your data to be rendered easily
 layout: post
 date: 11/08/2016
 ---
@@ -40,4 +41,8 @@ The state and action handler in the last example can be extracted out as a Redux
 
 I hope my explanation showed how we can improve the separation of concerns and logic in our applications.
 
-## Go refactor something!!
+<hr />
+
+## 2019 Update 
+
+A much better way to acheive this same pattern is by using a [react-recollect](https://github.com/davidgilbertson/react-recollect) store and transforming your view data with `selectors`.

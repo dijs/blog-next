@@ -4,6 +4,8 @@ import slug from 'slug';
 import dateFns from 'date-fns';
 
 export default [
+	raw('new-blog-2019.md'),
+	raw('loomis-head-study.md'),
 	raw('ares-game-part-1.md'),
 	raw('random-sentences.md'),
 	raw('trees.md'),
@@ -20,7 +22,7 @@ export default [
 	raw('starters.md'),
 	raw('yet-another-container-presenter-pattern.md'),
 	raw('homemade-thing-recognizer.md'),
-	raw('pan.md'),
+	raw('panhandling.md'),
 	raw('stupid-mario.md'),
 	raw('hotspots.md'),
 	raw('parsz.md'),
@@ -37,9 +39,7 @@ export default [
 	})
 	.sort((a, b) => +b.metadata.date - +a.metadata.date)
 	.map((post, index) => {
-		if (!post.metadata.blurb)
-			post.metadata.blurb =
-				'Dolore nisi eiusmod adipisicing sint quis aliqua dolor cillum et sit aliqua.';
+		if (!post.metadata.blurb) post.metadata.blurb = 'Write something here!';
 		post.metadata.date = dateFns.format(post.metadata.date, 'MMM D, YYYY');
 		post.slug = slug(post.metadata.title);
 		post.index = index;

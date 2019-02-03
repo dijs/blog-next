@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import avatar from '../images/avatar.svg';
+import { ReactComponent as Avatar } from '../images/avatar.svg';
 import { ReactComponent as Github } from '../images/github.svg';
 import { ReactComponent as LinkedIn } from '../images/linkedin.svg';
 import { ReactComponent as Npm } from '../images/npm.svg';
@@ -9,7 +9,7 @@ export default function Header() {
 	return (
 		<div className="header">
 			<div className="avatar">
-				<img src={avatar} alt="avatar" />
+				<Avatar />
 			</div>
 			<Link to="/" className="title">
 				<span className="a">dijs</span>

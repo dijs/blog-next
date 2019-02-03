@@ -1,6 +1,7 @@
 ---
 published: true
 title: Financial Independence with Mint
+blurb: Combining Mint exported data with my learnings from FI research
 layout: post
 date: 4/30/2016
 tags: [financial, independence, money, mint, coding, programming]

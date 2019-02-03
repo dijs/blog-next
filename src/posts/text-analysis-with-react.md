@@ -1,6 +1,7 @@
 ---
 published: true
 title: Text Analysis with React
+blurb: Early learning days with React communication
 layout: post
 date: 12/26/2015
 ---
@@ -16,4 +17,8 @@ Communication between components is crazy messy though. Maybe I am not doing it 
 - Breaking down your app into simple testable components is wonderful
 - Component communication is down right confusing
 
-Check it out [here](http://dijs.github.io/React-Text-Analysis/)
+### Check it out
+
+<iframe width="100%" height="900" src="https://dijs.github.io/React-Text-Analysis" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+

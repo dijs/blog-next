@@ -1,6 +1,7 @@
 ---
 published: true
 title: Self Learning Game
+blurb: Training a neural network to play a simple shoot-em-up game by trial and error
 layout: post
 date: 08/29/2017
 ---

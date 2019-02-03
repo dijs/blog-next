@@ -1,6 +1,7 @@
 ---
 published: true
 title: Trees
+blurb: Building 2D and 2D trees with SVG and THREE.js
 layout: post
 date: 11/03/2015
 ---

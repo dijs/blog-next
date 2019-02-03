@@ -1,6 +1,6 @@
 ---
 published: true
-image: 'https://cdn.pixabay.com/photo/2018/03/31/06/31/dog-3277416__340.jpg'
+blurb: Automating personal object detection for home security system
 title: Homemade Thing Recognizer
 layout: post
 date: 11/19/2017

@@ -1,6 +1,7 @@
 ---
 published: true
 title: Vacbot
+blurb: Hacking my Roomba 
 layout: post
 date: 3/27/2016
 ---

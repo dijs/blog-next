@@ -1,6 +1,7 @@
 ---
 published: true
 title: Functional Programming
+blurb: Start writing better code with these tips
 layout: post
 date: 1/31/2016
 ---

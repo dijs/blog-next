@@ -1,6 +1,7 @@
 ---
 published: true
 title: Workflow
+blurb: Step by step guide to how you should code
 layout: post
 date: 09/19/2015
 ---
@@ -50,6 +51,3 @@ Now that you have your modules created and tested, let’s write use case tests.
 
 By the time you get to this step, you should definitely know how your modules should be connected, which coding patterns you will use, and the overall structure of the codebase. Just to point out, this is **not a waterfall** workflow, be agile! If you you need to step back in the process, do it, but **follow the order** of the stages. Do not implement code before you design and write the initial tests for it. Once your use case tests pass, your solution should be complete.
 
-There is my workflow. I would love to get some feedback, so please leave me some comments below.
-
-Thanks

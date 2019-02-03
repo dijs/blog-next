@@ -1,15 +1,11 @@
 ---
 published: true
 title: Ares Game
-image: 'https://cdn.pixabay.com/photo/2019/01/24/11/31/structure-3952312_960_720.jpg'
 layout: post
+blurb: Learning C++ by writing a simple MMO game
 tags: [game, mmo, rpg, development]
 date: 3/1/2018
 ---
-
-### Intro
-
-This is the start of what I hope to be a long story.
 
 I have been wanting to make a proper open world mmo rpg for a very long time. I have started two or three times in the past, but after a few weeks of work and failures, the projects fizzled.
 

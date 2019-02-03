@@ -1,6 +1,7 @@
 ---
-published: false
+published: true
 title: Log with Comments
+blurb: Remember complex code by writing good comments
 layout: post
 date: 12/25/2015
 ---

@@ -1,6 +1,7 @@
 ---
 published: true
 title: Parsz
+blurb: Parse HTML with a JSON based structure request
 layout: post
 date: 01/25/2015
 ---
@@ -15,5 +16,6 @@ Since JSON has become very popular, I have not built in XML based output yet, al
 There are many improvements and features to add, like regular expression support and custom functions. But overall, the tool/library (however the community decides to use it) is in a fairly usable state.
 
 Here is the [repo](https://github.com/dijs/parsz).
+
 
 Have fun. Make sure to follow T&C.

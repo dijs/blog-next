@@ -1,6 +1,7 @@
 ---
 published: true
 title: Random Sentences
+blurb: Generating study material for language learning
 layout: post
 tags: [random, markov]
 date: 11/22/2014

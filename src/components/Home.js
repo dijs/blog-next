@@ -17,7 +17,17 @@ function PostList({ posts }) {
 export default function Home() {
   return (
     <div>
-      <Helmet title="Richard van der Dys | Blog" />
+      <Helmet>
+        <title>Richard van der Dys | Blog</title>
+        <meta property="og:url" content="https://blog.richardvanderdys.com" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Richard van der Dys | Blog" />
+        <meta
+          property="og:description"
+          content="Collection of posts about my personal development"
+        />
+      </Helmet>
+
       <Header />
       <PostList posts={posts} />
     </div>
