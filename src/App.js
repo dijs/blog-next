@@ -14,7 +14,7 @@ function App() {
     };
   });
   return (
-    <Router>
+    <Router basename="/blog-next">
       <div>
         <Switch>
           {routes.map((route, i) => (

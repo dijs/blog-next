@@ -1,5 +1,6 @@
 {
   "name": "blog-next",
+  "homepage": "https://dijs.github.io/blog-next/",
   "version": "1.0.0",
   "dependencies": {
     "classnames": "^2.2.6",
@@ -20,7 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r \"https://dijs.github.io/blog-next\""
+    "deploy": "gh-pages -d build -r \"https://github.com/dijs/blog-next.git\""
   },
   "eslintConfig": {
     "extends": "react-app"
