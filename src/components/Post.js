@@ -20,7 +20,7 @@ export default function Post({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={blurb} />
       </Helmet>
-      <Header />
+      <Header showBack />
       <article className="post">
         <div className="info">
           <h1>{title}</h1>

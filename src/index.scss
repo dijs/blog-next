@@ -19,6 +19,9 @@ body {
 	background-color: #bb4e75;
 	background-image: linear-gradient(135deg, #ff9d6c -30%, #bb4e75 100%);
 
+	.back {
+	}
+
 	.title {
 		width: 100%;
 		margin-top: 24px;
@@ -40,6 +43,7 @@ body {
 		text-align: right;
 		margin-top: 24px;
 		a,
+		.back,
 		span {
 			vertical-align: middle;
 		}
@@ -300,5 +304,8 @@ body {
 	}
 	.post-item {
 		width: 100%;
+	}
+	.social span {
+		display: none;
 	}
 }
