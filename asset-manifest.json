@@ -1,7 +1,7 @@
 {
-  "main.css": "/blog-next/static/css/main.ef8749ab.chunk.css",
-  "main.js": "/blog-next/static/js/main.311fa573.chunk.js",
-  "main.js.map": "/blog-next/static/js/main.311fa573.chunk.js.map",
+  "main.css": "/blog-next/static/css/main.72db84c4.chunk.css",
+  "main.js": "/blog-next/static/js/main.9ae32de4.chunk.js",
+  "main.js.map": "/blog-next/static/js/main.9ae32de4.chunk.js.map",
   "static/js/1.620ffcd6.chunk.js": "/blog-next/static/js/1.620ffcd6.chunk.js",
   "static/js/1.620ffcd6.chunk.js.map": "/blog-next/static/js/1.620ffcd6.chunk.js.map",
   "runtime~main.js": "/blog-next/static/js/runtime~main.eaa506c3.js",
@@ -10,8 +10,8 @@
   "static/media/linkedin.619231ff.svg": "/blog-next/static/media/linkedin.619231ff.svg",
   "static/media/npm.28700b9e.svg": "/blog-next/static/media/npm.28700b9e.svg",
   "static/media/github.617870e4.svg": "/blog-next/static/media/github.617870e4.svg",
-  "static/css/main.ef8749ab.chunk.css.map": "/blog-next/static/css/main.ef8749ab.chunk.css.map",
+  "static/css/main.72db84c4.chunk.css.map": "/blog-next/static/css/main.72db84c4.chunk.css.map",
   "index.html": "/blog-next/index.html",
-  "precache-manifest.72b21246a0f46070153570e0c68d1d69.js": "/blog-next/precache-manifest.72b21246a0f46070153570e0c68d1d69.js",
+  "precache-manifest.881c9a432b0221fd7ae98051cf0fe656.js": "/blog-next/precache-manifest.881c9a432b0221fd7ae98051cf0fe656.js",
   "service-worker.js": "/blog-next/service-worker.js"
 }
