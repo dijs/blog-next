@@ -15,30 +15,35 @@ export default function Header({ showBack }) {
 				<span className="a">dijs</span>
 				<span className="b">TALKS</span>
 			</Link>
-			<div className="social">
-				{showBack ? <div className="back">Back to all posts</div> : null}
-				<span>Find me on</span>
-				<a
-					href="https://github.com/dijs"
-					rel="noopener noreferrer"
-					target="_blank"
-				>
-					<Github className="icon" />
-				</a>
-				<a
-					href="https://www.linkedin.com/in/richard-van-der-dys-iii-91880a24/"
-					rel="noopener noreferrer"
-					target="_blank"
-				>
-					<LinkedIn className="icon" />
-				</a>
-				<a
-					href="https://npmjs.com/~dijs"
-					rel="noopener noreferrer"
-					target="_blank"
-				>
-					<Npm className="icon" />
-				</a>
+			<div className="bottom">
+				{showBack ? (
+					<Link to="/" className="back">
+						Back to all posts
+					</Link>
+				) : null}
+				<div className="social">
+					<a
+						href="https://github.com/dijs"
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<Github className="icon" />
+					</a>
+					<a
+						href="https://www.linkedin.com/in/richard-van-der-dys-iii-91880a24/"
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<LinkedIn className="icon" />
+					</a>
+					<a
+						href="https://npmjs.com/~dijs"
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<Npm className="icon" />
+					</a>
+				</div>
 			</div>
 		</div>
 	);
