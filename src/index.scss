@@ -283,6 +283,14 @@ article + .back {
 	}
 }
 
+.social .icon {
+	transition: 0.2s transform;
+	transform: scale(1);
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
 // Responsive
 
 @media only screen and (max-width: 960px) {

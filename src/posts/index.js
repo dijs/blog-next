@@ -4,6 +4,7 @@ import slug from 'slug';
 import dateFns from 'date-fns';
 
 export default [
+	raw('github-pages-static-routing.md'),
 	raw('new-blog-2019.md'),
 	raw('loomis-head-study.md'),
 	raw('ares-game-part-1.md'),
