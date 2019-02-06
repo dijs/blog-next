@@ -16,7 +16,7 @@ Enough backstory, lets talk code.
 
 We use [Pivotal](https://www.pivotaltracker.com) here to track our stories (bugs, chores, features...) and they have a pretty decent API. I had used their API on many other occasions creating internal apps for our team. But this project seemed to be begging to be open source. I generalized the data gathering and processing as much as I could. The filters in the app itself should work for any team. I stuck to a node app for ease of development, since I had already written a module for the Pivotal API. I got lots of practice with the use of [underscore](http://underscorejs.org/) chaining for data processing. By finding the ways to filter/map/group your data, you can truly make your code pretty and easy to understand. The difficult part was actually transforming the data to work with the chart [library](http://nvd3.org/). By the way, if anyone can see a better way to transform the data, please let me know! The charting library I used was a powerful tool, but hard to find documentation for. I believe the project owner has switched/forked a few times.
 
-<img src="http://www.richardvanderdys.com/projects/pivotal-charts/screenshot.png" width="100%">
+<img src="/pivotal.png" width="100%">
 
 ### Future
 

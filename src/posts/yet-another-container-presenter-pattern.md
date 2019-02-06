@@ -6,7 +6,7 @@ layout: post
 date: 11/08/2016
 ---
 
-*These ideas are not just for React, but for simplicity, I will be using React to demonstrate.*
+_These ideas are not just for React, but for simplicity, I will be using React to demonstrate._
 
 I am not going to go over what Smart/Dumb components are, Dan Abramov already did a great job [here](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.nrqfzj2dj).
 
@@ -22,20 +22,23 @@ Yes, it sounds ridiculous, but here is the reason: **Data which is easy to store
 
 My proposition is to use a **View Container** in between the Data Store and the Presenter.
 
-![Pattern Flow](https://docs.google.com/drawings/d/1SLtlXyZzw6CukM2CigBJOyMpq9Yny57p9-L7sIonKA0/pub?w=629&amp;h=195)
+![Pattern Flow](https://docs.google.com/drawings/d/1SLtlXyZzw6CukM2CigBJOyMpq9Yny57p9-L7sIonKA0/pub?w=629&h=195)
 
 By splitting up the way we manage the data and the way we manage the view state we can use better data structures to store, update, and obtain the necessary data to present.
 
 Here are some examples of the same application, but handling data, reducing, and rendering differently.
 
 ### First is our monolith. Do everything in one component.
-<iframe width="100%" height="300" src="http://jsfiddle.net/fojjyLkk/1/embedded/js,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<iframe width="100%" height="300" src="https://jsfiddle.net/fojjyLkk/1/embedded/js,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 ### Second is using the plain Container/Presenter pattern.
-<iframe width="100%" height="300" src="http://jsfiddle.net/cnmLyqx7/1/embedded/js,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<iframe width="100%" height="300" src="https://jsfiddle.net/cnmLyqx7/1/embedded/js,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 ### Third example shows Data Store/View Container/Presenter pattern.
-<iframe width="100%" height="300" src="http://jsfiddle.net/d6nc2u9t/embedded/js,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<iframe width="100%" height="300" src="https://jsfiddle.net/d6nc2u9t/embedded/js,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 The state and action handler in the last example can be extracted out as a Redux Store/Reducer, which would clean up this example even more.
 
@@ -43,6 +46,6 @@ I hope my explanation showed how we can improve the separation of concerns and l
 
 <hr />
 
-## 2019 Update 
+## 2019 Update
 
 A much better way to acheive this same pattern is by using a [react-recollect](https://github.com/davidgilbertson/react-recollect) store and transforming your view data with `selectors`.

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import posts from './posts';
 import Post from './components/Post';
 import Home from './components/Home';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const routes = posts.map(post => {
@@ -15,14 +16,14 @@ function App() {
   });
   return (
     <Router basename="/blog-next">
-      <div>
+      <ScrollToTop>
         <Switch>
           {routes.map((route, i) => (
             <Route key={i} {...route} />
           ))}
           <Route component={Home} />
         </Switch>
-      </div>
+      </ScrollToTop>
     </Router>
   );
 }

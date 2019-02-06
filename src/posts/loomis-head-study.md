@@ -8,11 +8,13 @@ date: 1/31/2019
 
 I recently watched this video and was amazed at how easy it became to sketch out a head shape with all the feature points.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wAOldLWIDSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video-responsive">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/wAOldLWIDSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 After practing a bit, I got the idea of "automating" the rules of the Loomis Head System.
 
 Here is what I came up with. It is a small subset of what you can prototype with the system, but for a few poses it works quite well.
 
-<iframe width="100%" height="800" src="http://jsfiddle.net/fvkq3m4p/embedded/result,js" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="800" src="https://jsfiddle.net/fvkq3m4p/embedded/result,js" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 

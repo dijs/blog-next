@@ -9,6 +9,17 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.back {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 16px;
+	display: block;
+	color: inherit;
+}
+
+article + .back {
+	margin: 16px;
+}
+
 .header {
 	color: white;
 	padding: 64px 64px 24px 64px;
@@ -18,11 +29,6 @@ body {
 
 	background-color: #bb4e75;
 	background-image: linear-gradient(135deg, #ff9d6c -30%, #bb4e75 100%);
-
-	.back {
-		display: block;
-		color: inherit;
-	}
 
 	.bottom {
 		display: flex;
@@ -241,6 +247,20 @@ body {
 		line-height: 1.58;
 		letter-spacing: -0.003em;
 	}
+}
+
+.video-responsive {
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	position: relative;
+	height: 0;
+}
+.video-responsive iframe {
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
 }
 
 // Animations

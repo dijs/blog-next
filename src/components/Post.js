@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Helmet from 'react-helmet';
 import Header from './Header';
+import Back from './Back';
 
 export default function Post({
   metadata: { title, date, blurb },
@@ -30,6 +31,7 @@ export default function Post({
           <ReactMarkdown source={content} escapeHtml={false} />
         </div>
       </article>
+      <Back />
     </div>
   );
 }

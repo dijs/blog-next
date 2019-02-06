@@ -4,6 +4,7 @@ import { ReactComponent as Avatar } from '../images/avatar.svg';
 import { ReactComponent as Github } from '../images/github.svg';
 import { ReactComponent as LinkedIn } from '../images/linkedin.svg';
 import { ReactComponent as Npm } from '../images/npm.svg';
+import Back from './Back';
 
 export default function Header({ showBack }) {
 	return (
@@ -13,14 +14,10 @@ export default function Header({ showBack }) {
 			</div>
 			<Link to="/" className="title">
 				<span className="a">dijs</span>
-				<span className="b">TALKS</span>
+				<span className="b">talks</span>
 			</Link>
 			<div className="bottom">
-				{showBack ? (
-					<Link to="/" className="back">
-						Back to all posts
-					</Link>
-				) : null}
+				{showBack ? <Back /> : null}
 				<div className="social">
 					<a
 						href="https://github.com/dijs"
