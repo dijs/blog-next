@@ -6,7 +6,7 @@ layout: post
 date: 02/06/2019
 ---
 
-I ran into this issue when using create-react-app and react-snapshot together, but it's possible to use this solution for any setup which creates this problem.
+I ran into this issue when using [create-react-app](https://facebook.github.io/create-react-app/) and [react-snapshot](https://github.com/geelen/react-snapshot) together, but it's possible to use this solution for any setup which creates this problem.
 
 ### The Problem
 
@@ -15,18 +15,18 @@ After building static site assets, you may have rendered HTML files which link t
 **Stucture before**
 
     /site
-    	/site/index.html
-    	/site/pages/a.html
-    	/site/pages/b.html
-    	/site/pages/c.html
+        /site/index.html
+        /site/pages/a.html
+        /site/pages/b.html
+        /site/pages/c.html
 
 **After structure fix**
 
     /site
-    	/site/index.html
-    	/site/pages/a/index.html
-    	/site/pages/b/index.html
-    	/site/pages/c/index.html
+        /site/index.html
+        /site/pages/a/index.html
+        /site/pages/b/index.html
+        /site/pages/c/index.html
 
 Only with this structure can you use loose routes such as:
 
@@ -44,13 +44,13 @@ const dir = 'build/post';
 const posts = fs.readdirSync(dir).filter(name => name.endsWith('html'));
 
 for (const post of posts) {
-	const base = path.basename(post, '.html');
-	try {
-		fs.mkdirSync(`${dir}/${base}`);
-	} catch (e) {
-		console.log(e.message);
-	}
-	fs.renameSync(`${dir}/${post}`, `${dir}/${base}/index.html`);
+  const base = path.basename(post, '.html');
+  try {
+    fs.mkdirSync(`${dir}/${base}`);
+  } catch (e) {
+    console.log(e.message);
+  }
+  fs.renameSync(`${dir}/${post}`, `${dir}/${base}/index.html`);
 }
 ```
 
