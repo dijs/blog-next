@@ -110,7 +110,7 @@ article + .back {
 			position: absolute;
 			opacity: 0;
 		}
-		&:hover {
+		&.active {
 			.note-wrapper {
 				animation: float-up 3s;
 				.note {
@@ -147,7 +147,7 @@ article + .back {
 				}
 			}
 		}
-		&:hover svg {
+		&.active svg {
 			animation-name: rocker;
 			animation-duration: 0.6s;
 			animation-iteration-count: 4;
