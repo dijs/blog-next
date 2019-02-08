@@ -1,6 +1,6 @@
 {
   "name": "blog-next",
-  "homepage": "https://dijs.github.io/blog-next/",
+  "homepage": "https://blog.richardvanderdys.com",
   "version": "1.0.0",
   "dependencies": {
     "classnames": "^2.2.6",

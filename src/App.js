@@ -15,7 +15,7 @@ function App() {
     };
   });
   return (
-    <Router basename="/blog-next">
+    <Router>
       <ScrollToTop>
         <Switch>
           {routes.map((route, i) => (
