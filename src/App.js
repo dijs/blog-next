@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import loadable from 'loadable-components';
 import posts from './posts';
-import Post from './components/Post';
-import Home from './components/Home';
 import ScrollToTop from './components/ScrollToTop';
+
+const Post = loadable(() => import('./components/Post'));
+const Home = loadable(() => import('./components/Home'));
 
 function App() {
   const routes = posts.map(post => {

@@ -5,6 +5,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "date-fns": "^1.30.1",
+    "loadable-components": "^2.2.3",
     "node-sass": "^4.11.0",
     "parse-md": "^1.0.3",
     "raw.macro": "^0.2.0",
@@ -14,13 +15,15 @@
     "react-markdown": "^4.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "2.1.3",
-    "react-snapshot": "^1.3.0",
     "slug": "^0.9.3"
   },
   "scripts": {
+    "analyze": "source-map-explorer build/static/js/main.*",
     "start": "react-scripts start",
-    "build": "react-scripts build && react-snapshot",
-    "predeploy": "npm run build && node scripts/create-indexes",
+    "build": "react-scripts build",
+    "postbuild": "react-snap",
+    "sw": "sw-precache --root=build --config=sw-precache-config.js --verbose",
+    "predeploy": "npm run build && npm run sw",
     "deploy": "gh-pages -d build -r \"https://github.com/dijs/blog-next.git\""
   },
   "eslintConfig": {
@@ -34,6 +37,9 @@
   ],
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "react-snap": "^1.23.0",
+    "source-map-explorer": "^1.6.0",
+    "sw-precache": "^5.2.1"
   }
 }
