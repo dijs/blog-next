@@ -6,6 +6,8 @@ module.exports = {
     'build/favicon.png'
   ],
   stripPrefix: 'build/',
+  // 3mb
+  maximumFileSizeToCacheInBytes: 3145728,
   runtimeCaching: [
     {
       urlPattern: '/post/(.*)',
