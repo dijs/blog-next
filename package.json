@@ -27,6 +27,10 @@
     "predeploy": "npm run build && npm run sw && npm run add-domain",
     "deploy": "gh-pages -d build -r \"https://github.com/dijs/blog-next.git\""
   },
+  "reactSnap": {
+    "skipThirdPartyRequests": true,
+    "inlineCss": true
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

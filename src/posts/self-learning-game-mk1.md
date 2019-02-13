@@ -19,7 +19,7 @@ I made a simpler game where the goal is not to get hit by missiles.
 
 Take a look:
 
-<iframe width="100%" height="900" src="https://dijs.github.io/ai-dodger/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe style="width: 100%; height: 900px;" src="https://dijs.github.io/ai-dodger/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 So, I wanted to train a network to decide where to move next based on the current player's state.
 

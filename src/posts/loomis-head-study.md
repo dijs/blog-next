@@ -16,5 +16,4 @@ After practing a bit, I got the idea of "automating" the rules of the Loomis Hea
 
 Here is what I came up with. It is a small subset of what you can prototype with the system, but for a few poses it works quite well.
 
-<iframe width="100%" height="800" src="https://jsfiddle.net/fvkq3m4p/embedded/result,js" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
+<iframe style="width: 100%; height: 800px;" src="https://jsfiddle.net/fvkq3m4p/embedded/js,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
