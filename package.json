@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "postbuild": "react-snap",
     "sw": "sw-precache --root=build --config=sw-precache-config.js --verbose",
-    "predeploy": "npm run build && npm run sw",
+    "add-domain": "echo \"blog.richardvanderdys.com\" > build/CNAME",
+    "predeploy": "npm run build && npm run sw && npm run add-domain",
     "deploy": "gh-pages -d build -r \"https://github.com/dijs/blog-next.git\""
   },
   "eslintConfig": {
