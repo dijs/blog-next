@@ -1,3 +1,3 @@
 # The Next Blog
 
-More coming soon.
+More coming soon...
