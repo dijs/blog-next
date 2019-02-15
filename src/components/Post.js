@@ -20,16 +20,17 @@ export default function Post({
         <meta property="og:type" content="article" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={blurb} />
+        <meta name="description" content={blurb} />
       </Helmet>
       <Header showBack />
       <article className="post">
-        <div className="info">
+        <aside className="info">
           <h1>{title}</h1>
           <div className="date">{date}</div>
-        </div>
-        <div className="content">
+        </aside>
+        <main className="content">
           <ReactMarkdown source={content} escapeHtml={false} />
-        </div>
+        </main>
       </article>
       <Back />
     </div>

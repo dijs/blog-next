@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import loadable from 'loadable-components';
-import posts from './posts';
+import posts from './posts.json';
 import ScrollToTop from './components/ScrollToTop';
 
 const Post = loadable(() => import('./components/Post'));

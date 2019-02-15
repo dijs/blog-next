@@ -1,16 +1,16 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import posts from '../posts';
+import posts from '../posts.json';
 import PostItem from './PostItem';
 import Header from './Header';
 
 function PostList({ posts }) {
   return (
-    <div className="posts">
+    <nav className="posts">
       {posts.map(post => (
         <PostItem key={post.slug} {...post} />
       ))}
-    </div>
+    </nav>
   );
 }
 
@@ -26,8 +26,11 @@ export default function Home() {
           property="og:description"
           content="Collection of posts about my personal development"
         />
+        <meta
+          name="description"
+          content="Collection of posts about my personal development"
+        />
       </Helmet>
-
       <Header />
       <PostList posts={posts} />
     </div>
