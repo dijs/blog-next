@@ -17,6 +17,7 @@
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
+    "test": "echo \"No tests\"",
     "start": "react-scripts start",
     "prebuild": "node scripts/build-posts",
     "build": "react-scripts build",
