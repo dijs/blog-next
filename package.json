@@ -24,8 +24,7 @@
     "postbuild": "react-snap",
     "sw": "sw-precache --root=build --config=sw-precache-config.js --verbose",
     "add-domain": "echo \"blog.richardvanderdys.com\" > build/CNAME",
-    "predeploy": "npm run build && npm run sw && npm run add-domain",
-    "deploy": "gh-pages -d build -r \"https://github.com/dijs/blog-next.git\""
+    "predeploy": "npm run build && npm run sw && npm run add-domain"
   },
   "reactSnap": {
     "skipThirdPartyRequests": true,
@@ -41,7 +40,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "gh-pages": "^2.0.1",
     "prettier": "^1.16.4",
     "react-snap": "^1.23.0",
     "source-map-explorer": "^1.6.0",
