@@ -1,3 +1,11 @@
+---
+published: true
+title: Static Web App
+blurb: Create apps with modern frameworks, but with fast old school static deployments
+layout: post
+date: 2/19/2019
+---
+
 Page load time is an important factor when developing a website. As modern developers, we can get too focused on what our frameworks (React, Vue, Angular) are doing for us, and we forget what our users are actually being served. With our users in mind, we can continue using our frameworks, but transform what the user receives to significantly improve the performance of the site.
 
 Have you looked at the output HTML for a basic client-side React app?
