@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["200.html","e84fa09c6257680bc9c8e76127216c69"],["404.html","3f05df1bfcf586b66b94deb3c573b753"],["favicon.png","83733d8e6ebd518608aa2c9678e16130"],["index.html","3f05df1bfcf586b66b94deb3c573b753"],["post/ares-game/index.html","c87021ec2912bd738002bf8a8c70ef74"],["post/custom-babel-plugin/index.html","ad0432b777b75fd6438ad04fc4b87bb4"],["post/evolution-simulation/index.html","ea463d1afc25abca4edfc18acc429775"],["post/financial-independence-with-mint/index.html","67f74cc5793713e8630675fd37e02590"],["post/flashcards/index.html","3c1e1a364e431bb2a4cb8a67f669c223"],["post/flex/index.html","40cd092cf61fccc2251a26c5711205df"],["post/functional-programming/index.html","52218fae0fb8a5471d53c8d09fa2664a"],["post/github-pages-static-routing/index.html","4c42e9eaf6292c06222afa880efd5fc4"],["post/homemade-thing-recognizer/index.html","97f316c4f0284ef01a92d27c4f52cf61"],["post/hotspots/index.html","2173b6d95a4e3a0c0ca340c219970959"],["post/hue-beats/index.html","8cdc42334fe5d0db2ba4c397f53c7bb6"],["post/log-with-comments/index.html","7f2b81c4c4d6f43ba770ffc663d4628a"],["post/loomis-head-study/index.html","3adc151da68ad7b852ba45709a7733fd"],["post/lunar-lander/index.html","2df759bc9589826fcf7e4f841545dc43"],["post/mutation-testing-in-javascript/index.html","3295c197511e9b2776dca9d94f986629"],["post/new-blog-2019/index.html","60e8b3e32e020ccd034278a9ba4ea9d3"],["post/panhandling/index.html","37c8811879a69377470e5eeb37faa4c2"],["post/parsz/index.html","272a9cde43b1c3c86c9c9e656922c8de"],["post/pivotal-charts/index.html","0ba7e3e89dd9e480e4b7880cf76fbfc3"],["post/random-sentences/index.html","a9dc9d13938e470c33d4c23247e267a4"],["post/reading-list/index.html","6daed6cffe8dba4cc72e1ad281b4940d"],["post/retro-neural-network/index.html","fcb17bb45b200a1b6e9f8c659e82cd7a"],["post/self-learning-game/index.html","812f910e0339a6f476a4fe75370f1950"],["post/shading-with-gpu/index.html","06d0d3611dfd9d3915ab117e3e020e91"],["post/starters/index.html","81508d5d4f76ac04e266abe918a4add7"],["post/static-web-app/index.html","b68016c7c4b0da97dc171b933f7e22c8"],["post/stupid-mario/index.html","4445a39db4f07db05c34150546f915d2"],["post/text-analysis-with-react/index.html","d8a8db3c165d06eff9146cfcf7eaa791"],["post/the-middleman/index.html","ec0d7f87e21fceb5a34857c6a3913a41"],["post/trees/index.html","5651a16fb50061f472ba250a8971363f"],["post/vacbot/index.html","c033bd81c33e1d86325fc3d3db1c7c46"],["post/workflow/index.html","4acd09bac00abbb0fed3701ff76f6b6c"],["post/yet-another-container-presenter-pattern/index.html","7e51f6631cdbe1946d3452bd32a46aed"],["static/css/main.4a78ead6.chunk.css","673cec8cd2e8615e304039cf85ff9f3f"],["static/js/0.c934ec01.chunk.js","deb351351b27edf2b1f665639e4de5a0"],["static/js/2.13bcaa13.chunk.js","b500f46655166f1c30acd9ab1ad1eb30"],["static/js/3.0be3f608.chunk.js","ddc6364d693683ab2bd1c84711c281cf"],["static/js/4.7527c85d.chunk.js","f857274a0b292e44d5733652735594e0"],["static/js/5.82858673.chunk.js","d9732b0214854ea0c0e72cf1f80f6881"],["static/js/main.13ad04d5.chunk.js","e262231a8f4135b5114e8c5eb478105e"],["static/js/runtime~main.6df7bf28.js","9edcb51b5216561ffadff7f2cfe191af"]];
+var precacheConfig = [["200.html","5e0acd14f2dd42e08342725dd1b67e5d"],["404.html","4033d41c3af30508d36118d7493ed31d"],["favicon.png","83733d8e6ebd518608aa2c9678e16130"],["index.html","4033d41c3af30508d36118d7493ed31d"],["post/ares-game/index.html","84e61948596b31b1128f8257410d38fe"],["post/custom-babel-plugin/index.html","1c6cb818a7f32cb24baa41761100adf0"],["post/dungeon-generator/index.html","ec9d7968a33fff9e6e5c872a90de5a88"],["post/evolution-simulation/index.html","3f9d83f9636d4293abeecc1f72f0f087"],["post/financial-independence-with-mint/index.html","18fe9152289424db9650682fef23c308"],["post/flashcards/index.html","097efa0ee5085cf11687e9dbb3197b53"],["post/flex/index.html","c876694b10695d62c2d1622a621494d9"],["post/functional-programming/index.html","d5d8794c47302c71a26e0d8cf313499f"],["post/github-pages-static-routing/index.html","5a3598f199f06be30c343aee78f0f354"],["post/homemade-thing-recognizer/index.html","aa0031ce363a01b48b58b64a260618b4"],["post/hotspots/index.html","d0e6b696c9474e35044e967a8b584653"],["post/hue-beats/index.html","3edcb58c7e48162cb5cc807d648ad4d4"],["post/log-with-comments/index.html","764e7cbb501333cc1aea37f2b164f3c9"],["post/loomis-head-study/index.html","2ca231c73b48e69cc7551be4b82ae828"],["post/lunar-lander/index.html","fa00d77f8f323967addc6fa915f36e5a"],["post/mutation-testing-in-javascript/index.html","45847f7fdf6b15490b227201ad0e5e5d"],["post/new-blog-2019/index.html","02c7e90bb71fc1522f20bb2dad1c5034"],["post/panhandling/index.html","1fdb72303337bf52a822fa6f94cf202c"],["post/parsz/index.html","82a1e3cb69b1064d8cd2303eb7235b3c"],["post/pivotal-charts/index.html","0cb40ad35ff144c402674187dc7caa37"],["post/random-sentences/index.html","0f998d119b5091d9080cdd51ac117dc8"],["post/reading-list/index.html","1f5200a27d9f375f47c7c67a72d30e7d"],["post/retro-neural-network/index.html","c6b59794339f0196ab91597c730ceadd"],["post/self-learning-game/index.html","9371e1b93a4fe77bff4f7b5ac1c85c45"],["post/shading-with-gpu/index.html","e5cee58bb1deaf9a0f4e1156dedcb6a6"],["post/starters/index.html","3e9e871f6d867efeebd32f429c9b16a0"],["post/static-web-app/index.html","9b65c23e482afdc44d46c5a3babd81aa"],["post/stupid-mario/index.html","96448831ec66d839f09652d9a6ebb494"],["post/text-analysis-with-react/index.html","56088f9ded63f0fb4e0e2146302fce0e"],["post/the-middleman/index.html","3775ee894c01f0b8d0b403802ba6e954"],["post/trees/index.html","9806c1178a9061425aa81323170564a3"],["post/vacbot/index.html","9388670447ec20799d2de519bcbe9005"],["post/workflow/index.html","7e0c5330d46efcf41bc6483c03e46618"],["post/yet-another-container-presenter-pattern/index.html","efd686a6f8fdc5083bf974b0faa7b5c7"],["static/css/main.55fbc9eb.chunk.css","da2a2427d09d73dd560051cbe76c887b"],["static/js/0.27c4503e.chunk.js","c40708134ca3312750cc42b57a4cf21c"],["static/js/2.b7e5928a.chunk.js","9bbc622807ab558d22a0846c492db4fe"],["static/js/3.f9f3fe37.chunk.js","3a89baa74f2e4907d417150b68fad323"],["static/js/4.2df71c08.chunk.js","fd658418640c11ff16338c40f8d6ef56"],["static/js/5.9a4b1eb5.chunk.js","ef7bc757adf5d68ea625403627c7ad2b"],["static/js/main.26da5fbb.chunk.js","b2a5887a21e0974ba28327c402517c00"],["static/js/runtime~main.f951835a.js","256021d20dc93821d669724533bd8824"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
@@ -45,7 +45,7 @@ var ignoreUrlParametersMatching = [/^utm_/];
 
 
 
-var addDirectoryIndex = function (originalUrl, index) {
+var addDirectoryIndex = function(originalUrl, index) {
     var url = new URL(originalUrl);
     if (url.pathname.slice(-1) === '/') {
       url.pathname += index;
@@ -53,7 +53,7 @@ var addDirectoryIndex = function (originalUrl, index) {
     return url.toString();
   };
 
-var cleanResponse = function (originalResponse) {
+var cleanResponse = function(originalResponse) {
     // If this is not a redirected response, then we don't have to do anything.
     if (!originalResponse.redirected) {
       return Promise.resolve(originalResponse);
@@ -75,7 +75,7 @@ var cleanResponse = function (originalResponse) {
     });
   };
 
-var createCacheKey = function (originalUrl, paramName, paramValue,
+var createCacheKey = function(originalUrl, paramName, paramValue,
                            dontCacheBustUrlsMatching) {
     // Create a new URL object to avoid modifying originalUrl.
     var url = new URL(originalUrl);
@@ -91,7 +91,7 @@ var createCacheKey = function (originalUrl, paramName, paramValue,
     return url.toString();
   };
 
-var isPathWhitelisted = function (whitelist, absoluteUrlString) {
+var isPathWhitelisted = function(whitelist, absoluteUrlString) {
     // If the whitelist is empty, then consider all URLs to be whitelisted.
     if (whitelist.length === 0) {
       return true;
@@ -104,7 +104,7 @@ var isPathWhitelisted = function (whitelist, absoluteUrlString) {
     });
   };
 
-var stripIgnoredUrlParameters = function (originalUrl,
+var stripIgnoredUrlParameters = function(originalUrl,
     ignoreUrlParametersMatching) {
     var url = new URL(originalUrl);
     // Remove the hash; see https://github.com/GoogleChrome/sw-precache/issues/290
