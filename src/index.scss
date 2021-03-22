@@ -363,6 +363,10 @@ td img {
   width: 100%;
 }
 
+#disqus_thread {
+  width: 60%;
+}
+
 // Responsive
 
 @media only screen and (max-width: 960px) {
@@ -391,6 +395,9 @@ td img {
     }
   }
   .content {
+    width: 90%;
+  }
+  #disqus_thread {
     width: 90%;
   }
 }

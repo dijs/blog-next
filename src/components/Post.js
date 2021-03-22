@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Helmet from 'react-helmet';
 import Header from './Header';
@@ -9,6 +9,22 @@ export default function Post({
   content,
   slug
 }) {
+  useEffect(() => {
+    window.disqus_config = function() {
+      this.page.url = `https://blog.richardvanderdys.com/post/${slug}`; // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = slug; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {
+      // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://dijs-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }, []);
+
   return (
     <div>
       <Helmet>
@@ -31,6 +47,7 @@ export default function Post({
         <main className="content">
           <ReactMarkdown source={content} escapeHtml={false} />
         </main>
+        <div id="disqus_thread"></div>
       </article>
       <Back />
     </div>
