@@ -20,7 +20,8 @@
     "export": "next export",
     "start": "next start",
     "add-domain": "echo \"blog.richardvanderdys.com\" > out/CNAME",
-    "predeploy": "npm run build && npm run export && npm run add-domain"
+    "fix-no-underscore": "touch out/.nojekyll",
+    "predeploy": "npm run build && npm run export && npm run add-domain && npm run fix-no-underscore"
   },
   "browserslist": [
     ">0.2%",
