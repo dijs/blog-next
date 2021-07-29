@@ -15,6 +15,7 @@ export default function Home({ posts }) {
           property="og:description"
           content="Collection of posts about my personal development"
         />
+        <link href="/favicon.png" rel="shortcut icon" />
         <meta
           name="description"
           content="Collection of posts about my personal development"

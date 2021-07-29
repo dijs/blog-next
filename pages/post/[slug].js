@@ -38,6 +38,7 @@ export default function Post({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={blurb} />
         <meta name="description" content={blurb} />
+        <link href="/favicon.png" rel="shortcut icon" />
       </Head>
       <Header showBack />
       <article className="post">
