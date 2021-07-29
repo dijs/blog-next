@@ -1,34 +1,26 @@
 {
   "name": "blog-next",
   "homepage": "https://blog.richardvanderdys.com",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "dependencies": {
     "@svgr/webpack": "^5.5.0",
     "classnames": "^2.2.6",
     "date-fns": "^1.30.1",
-    "loadable-components": "^2.2.3",
     "next": "^11.0.1",
     "parse-md": "^1.0.3",
+    "postcss": "^8.3.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.6",
     "sass": "^1.36.0"
   },
   "scripts": {
-    "prebuild": "node scripts/build-posts",
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
-    "add-domain": "echo \"blog.richardvanderdys.com\" > build/CNAME",
-    "predeploy": "npm run build && npm run add-domain"
-  },
-  "reactSnap": {
-    "skipThirdPartyRequests": true,
-    "inlineCss": true
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "add-domain": "echo \"blog.richardvanderdys.com\" > out/CNAME",
+    "predeploy": "npm run build && npm run export && npm run add-domain"
   },
   "browserslist": [
     ">0.2%",
@@ -37,9 +29,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "prettier": "^1.16.4",
-    "react-snap": "^1.23.0",
-    "source-map-explorer": "^1.6.0",
-    "sw-precache": "^5.2.1"
+    "eslint": "^7.31.0",
+    "eslint-config-next": "^11.0.1",
+    "prettier": "^1.16.4"
   }
 }

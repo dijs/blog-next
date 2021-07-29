@@ -29,3 +29,5 @@ src/posts.json
 .vscode
 
 .next
+
+out
