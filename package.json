@@ -3,28 +3,25 @@
   "homepage": "https://blog.richardvanderdys.com",
   "version": "1.0.0",
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
     "classnames": "^2.2.6",
     "date-fns": "^1.30.1",
     "loadable-components": "^2.2.3",
-    "node-sass": "^4.11.0",
+    "next": "^11.0.1",
     "parse-md": "^1.0.3",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.6",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "2.1.3"
+    "sass": "^1.36.0"
   },
   "scripts": {
-    "analyze": "source-map-explorer build/static/js/main.*",
-    "test": "echo \"No tests\"",
-    "start": "react-scripts start",
     "prebuild": "node scripts/build-posts",
-    "build": "react-scripts build",
-    "postbuild": "react-snap",
-    "sw": "sw-precache --root=build --config=sw-precache-config.js --verbose",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "add-domain": "echo \"blog.richardvanderdys.com\" > build/CNAME",
-    "predeploy": "npm run build && npm run sw && npm run add-domain"
+    "predeploy": "npm run build && npm run add-domain"
   },
   "reactSnap": {
     "skipThirdPartyRequests": true,

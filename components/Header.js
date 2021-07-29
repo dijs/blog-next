@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Github } from '../images/github.svg';
-import { ReactComponent as LinkedIn } from '../images/linkedin.svg';
-import { ReactComponent as Npm } from '../images/npm.svg';
-import { ReactComponent as Logo } from '../images/logo.svg';
+import Link from 'next/link';
+import Github from './vectors/github.svg';
+import LinkedIn from './vectors/linkedin.svg';
+import Npm from './vectors/npm.svg';
+import Logo from './vectors/logo.svg';
 import Back from './Back';
 import Avatar from './Avatar';
 
@@ -11,8 +10,10 @@ export default function Header({ showBack }) {
   return (
     <header className="header">
       <Avatar />
-      <Link to="/" className="logo">
-        <Logo />
+      <Link href="/">
+        <a className="logo">
+          <Logo />
+        </a>
       </Link>
       <div className="bottom">
         {showBack ? <Back /> : null}

@@ -6,6 +6,8 @@ layout: post
 date: 7/29/2021
 ---
 
-[Check it out](https://budget.vanderdys.design)
+👉 [Check it out](https://budget.vanderdys.design)
 
 ## Why?
+
+Yep. OKay. this?

@@ -1,23 +1,12 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import posts from '../posts.json';
-import PostItem from './PostItem';
-import Header from './Header';
+import Head from 'next/head';
+import PostItem from '../components/PostItem';
+import Header from '../components/Header';
+import buildPosts from '../scripts/build-posts';
 
-function PostList({ posts }) {
-  return (
-    <nav className="posts">
-      {posts.map(post => (
-        <PostItem key={post.slug} {...post} />
-      ))}
-    </nav>
-  );
-}
-
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <div>
-      <Helmet>
+      <Head>
         <title>Richard van der Dys | Blog</title>
         <meta property="og:url" content="https://blog.richardvanderdys.com" />
         <meta property="og:type" content="article" />
@@ -30,9 +19,21 @@ export default function Home() {
           name="description"
           content="Collection of posts about my personal development"
         />
-      </Helmet>
+      </Head>
       <Header />
-      <PostList posts={posts} />
+      <nav className="posts">
+        {posts.map(post => (
+          <PostItem key={post.slug} {...post} />
+        ))}
+      </nav>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      posts: buildPosts()
+    }
+  };
 }

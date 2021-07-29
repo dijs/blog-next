@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import Helmet from 'react-helmet';
-import Header from './Header';
-import Back from './Back';
+import Head from 'next/head';
+import Header from '../../components/Header';
+import Back from '../../components/Back';
+import buildPosts from '../../scripts/build-posts';
 
 export default function Post({
-  metadata: { title, date, blurb },
+  metadata: { title = '', date = '', blurb = '' } = {},
   content,
   slug
 }) {
@@ -27,7 +28,7 @@ export default function Post({
 
   return (
     <div>
-      <Helmet>
+      <Head>
         <title>{title}</title>
         <meta
           property="og:url"
@@ -37,7 +38,7 @@ export default function Post({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={blurb} />
         <meta name="description" content={blurb} />
-      </Helmet>
+      </Head>
       <Header showBack />
       <article className="post">
         <aside className="info">
@@ -52,4 +53,22 @@ export default function Post({
       <Back />
     </div>
   );
+}
+
+export async function getStaticProps(ctx) {
+  const props = buildPosts().find(p => p.slug === ctx.params.slug);
+  return {
+    props
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: buildPosts().map(({ slug }) => ({
+      params: {
+        slug
+      }
+    })),
+    fallback: false
+  };
 }
