@@ -5,10 +5,11 @@ import Npm from './vectors/npm.svg';
 import Logo from './vectors/logo.svg';
 import Back from './Back';
 import Avatar from './Avatar';
+import project from '../package.json';
 
 export default function Header({ showBack }) {
   return (
-    <header className="header">
+    <header className="header" data-version={project.version}>
       <Avatar />
       <Link href="/">
         <a className="logo">
