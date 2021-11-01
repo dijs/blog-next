@@ -10,6 +10,10 @@ export default function Post({
   content,
   slug
 }) {
+  /*
+
+  Removed comments for now, I hated the ads...
+
   useEffect(() => {
     window.disqus_config = function() {
       this.page.url = `https://blog.richardvanderdys.com/post/${slug}`; // Replace PAGE_URL with your page's canonical URL variable
@@ -25,6 +29,7 @@ export default function Post({
       (d.head || d.body).appendChild(s);
     })();
   }, []);
+  */
 
   return (
     <div>

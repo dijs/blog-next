@@ -1,0 +1,123 @@
+<html>
+  <style>
+    html {
+      overflow: hidden;
+    }
+    canvas {
+      transform: scale(1.1);
+      filter: blur(4px) contrast(20);
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <canvas width="160" height="160"></canvas>
+  <script>
+const canvas = document.querySelectorAll('canvas')[0];
+
+// This saves SO much performance rather than reading width from canvas every time
+const width = canvas.width;
+const height = canvas.height;
+
+const ctx = canvas.getContext('2d');
+const buffer = ctx.createImageData(width, height);
+
+const size = 8;
+const inner_radius = 3;
+const outer_ring_space = 4;
+const outer_ring_width = 3;
+const outer_ring_radius = outer_ring_space + outer_ring_width;
+
+function reset() {
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      ctx.fillStyle = Math.random() > 0.3 ? 'white' : 'black';
+      ctx.fillRect(x, y, 1, 1);
+    }
+  }
+}
+
+function step() {
+  // const started = Date.now();
+  const data = ctx.getImageData(0, 0, width, height).data;
+
+  let imageDataIndex = 0;
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      let sum1 = 0;
+      let count1 = 0;
+
+      let sum2 = 0;
+      let count2 = 0;
+
+      // Square
+      for (let dx = -size; dx <= size; dx++) {
+        for (let dy = -size; dy <= size; dy++) {
+          if (!dx && !dy) continue;
+
+          const _x = x + dx;
+          const _y = y + dy;
+
+          const index = _y * width + _x;
+          const value = data[index * 4];
+
+          // Math.hypot is slower than this
+          const d = Math.sqrt(Math.pow(x - _x, 2) + Math.pow(y - _y, 2));
+
+          if (d > 0 && d <= inner_radius) {
+            sum2 += value ? 1 : 0;
+            count2++;
+          }
+
+          if (d > outer_ring_space && d <= outer_ring_radius) {
+            sum1 += value ? 1 : 0;
+            count1++;
+          }
+        }
+      }
+
+      const avg1 = sum1 / count1;
+      const avg2 = sum2 / count2;
+
+      let output = data[imageDataIndex];
+
+      if (avg1 >= 0.21 && avg1 <= 0.22) {
+        output = 255;
+      }
+      if (avg1 >= 0.35 && avg1 <= 0.5) {
+        output = 0;
+      }
+      if (avg1 >= 0.75 && avg1 <= 0.85) {
+        output = 0;
+      }
+      if (avg2 >= 0.1 && avg2 <= 0.28) {
+        output = 0;
+      }
+      if (avg2 >= 0.43 && avg2 <= 0.55) {
+        output = 255;
+      }
+      if (avg1 >= 0.12 && avg1 <= 0.15) {
+        output = 0;
+      }
+
+      // Set buffer pixel
+      buffer.data[imageDataIndex++] = output;
+      buffer.data[imageDataIndex++] = output;
+      buffer.data[imageDataIndex++] = output;
+      buffer.data[imageDataIndex++] = 255;
+    }
+  }
+  // const ended = Date.now();
+  // console.log('took', ended - started);
+
+  ctx.putImageData(buffer, 0, 0);
+
+  requestAnimationFrame(step);
+}
+
+canvas.addEventListener('click', reset);
+
+reset();
+step();
+  </script>
+</html>
