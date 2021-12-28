@@ -27,7 +27,7 @@ export default function Header({ showBack }) {
             <Github className="icon" />
           </a>
           <a
-            href="https://www.linkedin.com/in/richard-van-der-dys-iii-91880a24/"
+            href="https://www.linkedin.com/in/dijs"
             rel="noopener noreferrer"
             target="_blank"
           >
