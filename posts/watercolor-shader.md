@@ -6,11 +6,9 @@ layout: post
 date: 5/22/2022
 ---
 
-# Watercolor Shader
-
 My wife is a pro at watercolor pencils. It always amazes me that she can take a great little sketch and apply some water with a few brushstrokes to it and it comes to life.
 
-Check out some of her [work](https://vanderdys.design/heather-blog).
+Check out some of her [work](https://www.heathervanderdys.com/).
 
 Shaders have always been interesting to me and I love to understand how they work. My goal with this shader was to immerse the viewer into a realtime watercolor painting.
 

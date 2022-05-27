@@ -1,0 +1,209 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <style>
+      body {
+        margin: 0;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      canvas {
+        max-width: 400px;
+        margin-bottom: 10px;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      label {
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        font-family: monospace;
+      }
+
+      input {
+        border: none;
+        background: #ddd;
+        padding: 5px;
+      }
+
+      button {
+        margin: 5px;
+        padding: 5px;
+        border: none;
+        background: #666;
+        color: white;
+      }
+
+      p {
+        font-family: monospace;
+        text-align: center;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <canvas width="400" height="400"></canvas>
+      <div>
+        <label>
+          Grid Size
+          <input type="number" value="7" id="size" />
+        </label>
+        <label>
+          Random Seed
+          <input type="text" value="hello world" id="seed" />
+        </label>
+        <label>
+          <span
+            >Palette from
+            <a href="https://coolors.co/">https://coolors.co/</a></span
+          >
+          <input
+            type="text"
+            value="https://coolors.co/palette/ccd5ae-e9edc9-fefae0-faedcd-d4a373"
+            id="palette"
+          />
+        </label>
+        <label>
+          Paths
+          <input type="text" value="3,7,4" id="paths" />
+        </label>
+        <label>
+          Arc Radius (0 for straight lines)
+          <input type="number" value="0" id="arc" />
+        </label>
+        <button id="render">
+          Render
+        </button>
+        <button id="random-seed">
+          Random Seed
+        </button>
+        <button id="last-seed">
+          Go to previous seed
+        </button>
+      </div>
+      <p>
+        Tip: You can right-click and save the image if you love it!
+      </p>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script>
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+
+      const canvasSize = canvas.width;
+      let s = 7;
+      let cellSize = canvasSize / s;
+      let verticies = [];
+      let lastSeeds = [];
+      let arcRadius = 100;
+
+      let myrng = new Math.seedrandom('hello.1');
+      let palette = 'https://coolors.co/palette/ccd5ae-e9edc9-fefae0-faedcd-d4a373'
+        .substring(27)
+        .split('-')
+        .map(e => '#' + e);
+
+      const randColor = () => palette[(myrng() * palette.length) | 0];
+
+      function randomCellVert() {
+        return {
+          x: Math.round(myrng() * s) * cellSize,
+          y: Math.round(myrng() * s) * cellSize
+        };
+      }
+
+      function reset() {
+        verticies = [];
+
+        for (let x = 0; x <= s; x++) {
+          for (let y = 0; y <= s; y++) {
+            verticies.push({
+              x: cellSize * x,
+              y: cellSize * y
+            });
+          }
+        }
+
+        // shuffle
+        for (let i = 0; i < verticies.length; i++) {
+          let t = {
+            ...verticies[i]
+          };
+          const r = Math.floor(myrng() * verticies.length);
+          verticies[i] = verticies[r];
+          verticies[r] = t;
+        }
+      }
+
+      function addPoint(p1, p2, i) {
+        const r = arcRadius;
+        ctx.arcTo(p1.x, p1.y, p2.x, p2.y, r);
+      }
+
+      function jumpAround(n) {
+        ctx.beginPath();
+        for (let i = 1; i <= n; i++) {
+          addPoint(verticies[i - 1], verticies[i], i - 1);
+        }
+        ctx.fill();
+      }
+
+      function render() {
+        arcRadius = parseInt(document.querySelector('#arc').value, 10);
+        s = parseInt(document.querySelector('#size').value, 10);
+        cellSize = canvasSize / s;
+        myrng = new Math.seedrandom(document.querySelector('#seed').value);
+        palette = document
+          .querySelector('#palette')
+          .value.substring(27)
+          .split('-')
+          .map(e => '#' + e);
+
+        for (let i = 0; i < palette.length; i++) {
+          let t = palette[i];
+          const r = Math.floor(myrng() * palette.length);
+          palette[i] = palette[r];
+          palette[r] = t;
+        }
+        let colorIndex = 1;
+        ctx.fillStyle = palette[0];
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        reset();
+        document
+          .querySelector('#paths')
+          .value.split(',')
+          .forEach(n => {
+            ctx.fillStyle = palette[colorIndex];
+            colorIndex = (colorIndex + 1) % palette.length;
+            jumpAround(parseInt(n, 10));
+          });
+      }
+
+      render();
+
+      document.querySelector('#render').addEventListener('click', render);
+
+      document.querySelector('#random-seed').addEventListener('click', () => {
+        lastSeeds.push(document.querySelector('#seed').value);
+        document.querySelector('#seed').value =
+          (Math.random() * 100000) | (0 + '');
+        render();
+      });
+
+      document.querySelector('#last-seed').addEventListener('click', () => {
+        document.querySelector('#seed').value = lastSeeds.pop();
+        render();
+      });
+    </script>
+  </body>
+</html>
