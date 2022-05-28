@@ -17,7 +17,7 @@ I am loving all the incredible computer generated art these days. I will preface
 
 If you just want to play with what I built, go ahead:
 
-Try out the [generator](/art-generator/index.html)!
+Try out the [generator](https://art-generator-ochre.vercel.app/)!
 
 Mondrian was the first artist that opened the world of geometrical art for me. For the first time "modern" art had its own personal meaning to me, that there would be beauty in organized geometrical chaos. Being able to break down that chaos into a algorithm almost feels wrong, as if I am removing the human-ness to it. But alas, breaking down problems is what I do.
 
