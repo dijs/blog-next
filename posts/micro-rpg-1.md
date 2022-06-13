@@ -14,7 +14,7 @@ I am doing my best to not think of the end goal with this game, but just to unde
 
 Here is a teaser demo, and don't focus on the art or style itself, that will all change. Focus on the engine:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/d-juZRplciw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d-juZRplciw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%;"></iframe>
 
 So, now to explain the features I am excited about.
 
