@@ -34,7 +34,7 @@ To capture the beauty of our creation, we have implemented a recording function.
 
 This post has introduced you to the fascinating world of shaders, fractals, and WebGL. These tools allow you to tap into the raw power of modern GPUs and create truly stunning visuals right in your web browser. We hope you've found this guide informative and inspiring.
 
-Remember, the code provided here is just a starting point. With a little imagination and a willingness to experiment, you can push this basic framework in a myriad of exciting directions. Happy coding!
+Remember, the code provided here is just a starting point. With a little imagination and a willingness to experiment, you can push this basic framework in a myriad of exciting directions.
 
 ```js
 #version 300 es
@@ -91,3 +91,5 @@ void main() {
     color = vec4(finalColor, 1.0);
 }
 ```
+
+Thanks to `kishimisu` for the amazing shader tutorial!
