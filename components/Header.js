@@ -11,7 +11,7 @@ export default function Header({ showBack }) {
   return (
     <header className="header" data-version={project.version}>
       <Avatar />
-      <Link href="/">
+      <Link href="/" legacyBehavior>
         <a className="logo">
           <Logo />
         </a>

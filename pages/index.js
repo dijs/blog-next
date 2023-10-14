@@ -23,7 +23,7 @@ export default function Home({ posts }) {
       </Head>
       <Header />
       <nav className="posts">
-        {posts.map(post => (
+        {posts.map((post) => (
           <PostItem key={post.slug} {...post} />
         ))}
       </nav>
@@ -34,7 +34,7 @@ export default function Home({ posts }) {
 export async function getStaticProps() {
   return {
     props: {
-      posts: buildPosts()
-    }
+      posts: buildPosts(),
+    },
   };
 }

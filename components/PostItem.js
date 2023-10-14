@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 export default function PostItem({
   metadata: { title = '', blurb = '', date = '' },
-  path = ''
+  path = '',
 }) {
   return (
-    <Link href={path}>
+    <Link href={path} legacyBehavior>
       <a className="post-item">
         <div className="title">{title}</div>
         <div className="blurb">{blurb}</div>
