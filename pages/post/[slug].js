@@ -11,6 +11,7 @@ export default function Post({
   metadata: { title = '', date = '', blurb = '' } = {},
   content,
   slug,
+  number,
 }) {
   return (
     <div>
@@ -29,7 +30,10 @@ export default function Post({
       <Header showBack />
       <article className="post">
         <aside className="info">
-          <h1>{title}</h1>
+          <h1>
+            <span className="number">#{number} </span>
+            {title}
+          </h1>
           <div className="date">{date}</div>
         </aside>
         <main className="content">
@@ -50,9 +54,14 @@ export default function Post({
 }
 
 export async function getStaticProps(ctx) {
-  const props = buildPosts().find((p) => p.slug === ctx.params.slug);
+  const posts = buildPosts();
+  const index = posts.findIndex((p) => p.slug === ctx.params.slug);
+  const props = posts[index];
   return {
-    props,
+    props: {
+      ...props,
+      number: posts.length - index,
+    },
   };
 }
 

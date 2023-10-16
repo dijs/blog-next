@@ -23,8 +23,8 @@ export default function Home({ posts }) {
       </Head>
       <Header />
       <nav className="posts">
-        {posts.map((post) => (
-          <PostItem key={post.slug} {...post} />
+        {posts.map((post, index, arr) => (
+          <PostItem key={post.slug} {...post} number={arr.length - index} />
         ))}
       </nav>
     </div>
