@@ -41,4 +41,8 @@ Lastly, I wanted to make a Frogger-like game. The new challenges here animating 
 
 ## Conclusion
 
-I had never worked in such a constrained environment before. Using C with a specific game development framework was a new challenge. Thankfully many developers came before me to improve the framework and provide tutorials. I hope to continue to learn more about the Game Boy and make my own custom open-world space-themed game in the future!
+I had never worked in such a constrained environment before. Using C with a specific game development framework was a new challenge. Thankfully many developers came before me to improve the framework and provide tutorials.
+
+One last awesome experience was using the emulator to test my games. It was such magic being able to see my game running on a real Game Boy emulator!
+
+I hope to continue to learn more about the Game Boy and make my own custom open-world space-themed game in the future!
