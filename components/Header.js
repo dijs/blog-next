@@ -3,6 +3,7 @@ import Github from './vectors/github.svg';
 import LinkedIn from './vectors/linkedin.svg';
 import Npm from './vectors/npm.svg';
 import Logo from './vectors/logo.svg';
+import Rss from './vectors/rss.svg';
 import Back from './Back';
 import Avatar from './Avatar';
 import project from '../package.json';
@@ -39,6 +40,9 @@ export default function Header({ showBack }) {
             target="_blank"
           >
             <Npm className="icon" />
+          </a>
+          <a href="/api/rss" rel="noopener noreferrer" target="_blank">
+            <Rss className="icon" />
           </a>
         </div>
       </div>
