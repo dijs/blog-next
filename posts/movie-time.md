@@ -6,7 +6,7 @@ layout: post
 date: 5/2/2024
 ---
 
-<video width="1280" height="720" controls>
+<video width="800" height="500" controls>
   <source src="/videos/bunny.mp4" type="video/mp4">
   No video support.
 </video>
