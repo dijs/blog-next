@@ -41,9 +41,9 @@ export default function Header({ showBack }) {
           >
             <Npm className="icon" />
           </a>
-          <a href="/api/rss" rel="noopener noreferrer" target="_blank">
+          {/* <a href="/api/rss" rel="noopener noreferrer" target="_blank">
             <Rss className="icon" />
-          </a>
+          </a> */}
         </div>
       </div>
     </header>
