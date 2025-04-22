@@ -1,9 +1,22 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import PostItem from '../components/PostItem';
 import Header from '../components/Header';
 import buildPosts from '../scripts/build-posts';
 
 export default function Home({ posts }) {
+  const [searchValue, setSearchValue] = useState('');
+
+  const filteredPosts = posts.filter((post) => {
+    const { title, blurb } = post.metadata;
+    const search = searchValue.toLowerCase();
+    return (
+      title.toLowerCase().includes(search) ||
+      blurb.toLowerCase().includes(search) ||
+      post.content.toLowerCase().includes(search)
+    );
+  });
+
   return (
     <div>
       <Head>
@@ -21,10 +34,10 @@ export default function Home({ posts }) {
           content="Collection of posts about my personal development"
         />
       </Head>
-      <Header />
+      <Header searchValue={searchValue} onSearchChange={setSearchValue} />
       <nav className="posts">
-        {posts.map((post, index, arr) => (
-          <PostItem key={post.slug} {...post} number={arr.length - index} />
+        {filteredPosts.map((post) => (
+          <PostItem key={post.slug} {...post} number={post.number} />
         ))}
       </nav>
     </div>
@@ -32,9 +45,15 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
+  const posts = await buildPosts();
+  // Add number
+  posts.forEach((post, index, arr) => {
+    post.number = arr.length - index;
+  });
+
   return {
     props: {
-      posts: buildPosts(),
+      posts,
     },
   };
 }

@@ -22,6 +22,17 @@ article + .back {
   margin: 16px;
 }
 
+.search {
+  width: 300px;
+}
+
+.search input {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  width: 100%;
+}
+
 .header {
   color: white;
   padding: 64px 64px 24px 64px;
@@ -34,7 +45,7 @@ article + .back {
 
   .bottom {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     margin-top: 24px;
@@ -434,5 +445,8 @@ td img {
   }
   .post-item {
     width: 100%;
+  }
+  .search {
+    width: 50%;
   }
 }
