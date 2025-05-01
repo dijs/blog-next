@@ -14,6 +14,10 @@ body {
   color: inherit;
 }
 
+pre {
+  overflow: auto;
+}
+
 code {
   color: #cf6574;
 }
@@ -448,5 +452,9 @@ td img {
   }
   .search {
     width: 50%;
+  }
+
+  video {
+    width: 100%;
   }
 }

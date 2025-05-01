@@ -52,7 +52,7 @@ func steer():
 	velocity = move_dir * speed
 ```
 
-Ants in this simulation don’t just blindly follow the strongest scent—they actually blend direction and strength to make smarter, more organic movement decisions. The `steer` function is where the magic happens. Each ant samples nearby scent sources, calculates the direction toward each one, and weights that direction by how strong the scent is and how well it aligns with the ant’s current movement. All those vectors are mashed together into a “consensus direction,” which the ant then follows—with a bit of noise added in for randomness (because nobody likes a perfectly optimized bug). If no scent is detected, the ant just wiggles around aimlessly in a wandering pattern, like it forgot what it was doing. It's a balance of signal-following and chaos, and it’s weirdly fun to watch.
+Ants in this simulation don’t just blindly follow the strongest scent—they actually blend direction and strength to make smarter, more organic movement decisions. The `steer` function is where the magic happens. Each ant samples nearby scent sources, calculates the direction toward each one, and weights that direction by how strong the scent is and how well it aligns with the ant’s current movement. All those vectors are mashed together into a “consensus direction,” which the ant then follows—with a bit of noise added in for randomness, because nobody likes a perfectly optimized bug. If no scent is detected, the ant just wiggles around aimlessly in a wandering pattern, like it forgot what it was doing. It's a balance of signal-following and chaos, and it’s weirdly fun to watch.
 
 ## Watching Emergence Happen
 
