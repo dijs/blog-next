@@ -12,7 +12,7 @@ My wife and I have always wanted to collaborate on a video game project. We have
 
 ## Research Phase
 
-When the GameJam started (February 20th) we dove into design mode. The theme this year was "It is NOT real". We immediately wrote down as many words as we could think of that fit the theme. After filling 3 pages of words, we filtered out our favorite words and started to think of potential game mechanics that would fit the words. We eventually landed on the subject of "dreams" and decided that the player should have to play through a series of dreams and nightmares.
+When the GameJam started February 20th we dove into design mode. The theme this year was "It is NOT real". We immediately wrote down as many words as we could think of that fit the theme. After filling 3 pages of words, we filtered out our favorite words and started to think of potential game mechanics that would fit the words. We eventually landed on the subject of "dreams" and decided that the player should have to play through a series of dreams and nightmares.
 
 Then to spice things up, we decided to go with a French art/music theme.
 
@@ -28,4 +28,4 @@ We had a bunch of fun making this game together and hope you enjoy playing it!
 
 The embedded game will load below...
 
-<iframe mozallowfullscreen="true" allow="autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr" frameborder="0" src="//v6p9d9t4.ssl.hwcdn.net/html/5325535/index.html" msallowfullscreen="true" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" id="game_drop" allowtransparency="true" width="1024" height="600"></iframe>
+<iframe frameborder="0" src="https://itch.io/embed-upload/5325535?color=333333" allowfullscreen="" width="1024" height="620"></iframe>
