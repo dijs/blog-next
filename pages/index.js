@@ -31,6 +31,7 @@ export default function Home({ posts }) {
           property="og:description"
           content="Collection of posts about my personal development"
         />
+        <meta property="og:image" content="/avatar.png" />
         <link href="/avatar.png" rel="shortcut icon" />
         <meta
           name="description"

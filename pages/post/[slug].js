@@ -55,6 +55,7 @@ export default function Post({
         <meta property="og:type" content="article" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={blurb} />
+        <meta property="og:image" content="/avatar.png" />
         <meta name="description" content={blurb} />
         <link href="/avatar.png" rel="shortcut icon" />
       </Head>
