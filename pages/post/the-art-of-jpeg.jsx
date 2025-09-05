@@ -10,6 +10,7 @@ import {
   drawGridOverlayToCanvas,
   drawZoomedBlockToCanvas,
   drawFrequencyPatternTable,
+  drawPresenceTable,
 } from '../../utils/jpg';
 
 function Section({ number, title, children }) {
@@ -56,6 +57,7 @@ export default function ArtOfJPEG() {
   const gridImgRef = useRef(null);
   const zoomImgRef = useRef(null);
   const [freqPatternImgData, setFreqPatternImgData] = useState(null);
+  const [selectedBlock, setSelectedBlock] = useState({ url: '', data: [] });
 
   useEffect(() => {
     setFreqPatternImgData(drawFrequencyPatternTable());
@@ -114,7 +116,9 @@ export default function ArtOfJPEG() {
   ]);
 
   function updateZoomImage(event) {
-    zoomImgRef.current.src = drawZoomedBlockToCanvas(event);
+    // zoomImgRef.current.src = drawZoomedBlockToCanvas(event).url;
+
+    setSelectedBlock(drawZoomedBlockToCanvas(event));
   }
 
   // TODO:
@@ -288,12 +292,23 @@ export default function ArtOfJPEG() {
               <figcaption>Hover or click to zoom into an 8x8 block</figcaption>
             </figure>
             <figure>
-              <img ref={zoomImgRef} alt="Zoomed-in 8x8 Block" />
+              <img
+                ref={zoomImgRef}
+                src={selectedBlock.url}
+                alt="Zoomed-in 8x8 Block"
+              />
               <figcaption>Zoomed-in view of selected 8x8 block</figcaption>
             </figure>
             <figure>
               <img src={freqPatternImgData} alt="Frequency Patterns Table" />
               <figcaption>Frequency patterns in an 8x8 DCT block</figcaption>
+            </figure>
+            <figure>
+              <img
+                src={drawPresenceTable(selectedBlock.data)}
+                alt="Frequency Presence Table"
+              />
+              <figcaption>Presence of frequency table</figcaption>
             </figure>
           </div>
         </Section>

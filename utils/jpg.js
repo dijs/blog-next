@@ -200,7 +200,22 @@ export function drawZoomedBlockToCanvas(event, blockSize = 8) {
   );
   ctx.putImageData(imageData, 0, 0);
 
-  return canvas.toDataURL();
+  // extract the 8x8 block data for further processing if needed
+  const blockData = [];
+  for (let j = 0; j < blockSize; j++) {
+    const row = [];
+    for (let i = 0; i < blockSize; i++) {
+      const index = (j * blockSize + i) * 4;
+      const r = imageData.data[index];
+      row.push(r);
+    }
+    blockData.push(row);
+  }
+
+  return {
+    url: canvas.toDataURL(),
+    data: blockData,
+  };
 }
 
 export function drawFrequencyPatternTable() {
@@ -247,6 +262,66 @@ export function drawFrequencyPatternTable() {
           }
         }
       }
+    }
+  }
+
+  return canvas.toDataURL();
+}
+
+// Naive 8x8 Discrete Cosine Transform (DCT-II)
+function dct2D(block) {
+  const N = 8;
+  const result = Array.from({ length: N }, () => Array(N).fill(0));
+
+  for (let u = 0; u < N; u++) {
+    for (let v = 0; v < N; v++) {
+      let sum = 0;
+      for (let x = 0; x < N; x++) {
+        for (let y = 0; y < N; y++) {
+          sum +=
+            block[x][y] *
+            Math.cos(((2 * x + 1) * u * Math.PI) / (2 * N)) *
+            Math.cos(((2 * y + 1) * v * Math.PI) / (2 * N));
+        }
+      }
+      const cu = u === 0 ? 1 / Math.sqrt(2) : 1;
+      const cv = v === 0 ? 1 / Math.sqrt(2) : 1;
+      result[u][v] = 0.25 * cu * cv * sum;
+    }
+  }
+
+  return result;
+}
+
+export function drawPresenceTable(selectedData) {
+  // selectedData is a 2D array of numbers indicating luminance
+  const coefficients = dct2D(selectedData);
+
+  const blockSize = 32;
+  const canvas = document.createElement('canvas');
+  canvas.width = blockSize * 8;
+  canvas.height = blockSize * 8;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 1;
+
+  for (let u = 0; u < 8; u++) {
+    for (let v = 0; v < 8; v++) {
+      const startX = u * blockSize;
+      const startY = v * blockSize;
+
+      // Draw the square
+      ctx.strokeRect(startX, startY, blockSize, blockSize);
+
+      // Draw the coefficient value
+      const coeff = Math.round(coefficients[u][v]);
+      ctx.fillStyle = 'black';
+      ctx.font = '16px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(coeff, startX + blockSize / 2, startY + blockSize / 2);
     }
   }
 
