@@ -12,6 +12,9 @@ export default function ArtOfJPEG() {
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [fileSize, setFileSize] = useState(0);
 
+  const [colorChannelThreshold, setColorChannelThreshold] = useState(120);
+  const [colorChannelAmplify, setColorChannelAmplify] = useState(3);
+
   const yImgRef = useRef(null);
   const cbImgRef = useRef(null);
   const crImgRef = useRef(null);
@@ -28,8 +31,11 @@ export default function ArtOfJPEG() {
     // Blob to ImageData?
     const ogImageData = await getImageDataFromBlob(blob);
 
-    const { yImageData, cbImageData, crImageData } =
-      extractColorChannels(ogImageData);
+    const { yImageData, cbImageData, crImageData } = extractColorChannels(
+      ogImageData,
+      colorChannelThreshold,
+      colorChannelAmplify
+    );
 
     yImgRef.current.src = drawImageDataToCanvas(yImageData);
     cbImgRef.current.src = drawImageDataToCanvas(cbImageData);
@@ -40,7 +46,7 @@ export default function ArtOfJPEG() {
     if (imgRef.current) {
       processImage();
     }
-  }, [imgRef.current]);
+  }, [imgRef.current, colorChannelThreshold, colorChannelAmplify]);
 
   return (
     <PostContainer
@@ -116,6 +122,38 @@ export default function ArtOfJPEG() {
             <img ref={cbImgRef} alt="Chrominance Blue Channel" />
             <img ref={crImgRef} alt="Chrominance Red Channel" />
           </div>
+          <div className={styles.sliderContainer}>
+            <label>
+              Chrominance Threshold: {colorChannelThreshold}
+              <input
+                type="range"
+                min="0"
+                max="255"
+                value={colorChannelThreshold}
+                onChange={(e) =>
+                  setColorChannelThreshold(parseInt(e.target.value, 10))
+                }
+              />
+            </label>
+            <label>
+              Chrominance Amplify: {colorChannelAmplify}
+              <input
+                type="range"
+                min="1"
+                max="20"
+                value={colorChannelAmplify}
+                onChange={(e) =>
+                  setColorChannelAmplify(parseInt(e.target.value, 10))
+                }
+              />
+            </label>
+          </div>
+          <p>
+            The images above show the Y, Cb, and Cr channels extracted from the
+            original image. The sliders allow you to adjust the threshold and
+            amplification for the chrominance channels, demonstrating how JPEG
+            can manipulate these channels for compression.
+          </p>
         </section>
       </div>
     </PostContainer>

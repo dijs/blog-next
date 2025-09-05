@@ -17,7 +17,11 @@ export function getImageDataFromBlob(blob) {
   });
 }
 
-export function extractColorChannels(ogImageData) {
+export function extractColorChannels(
+  ogImageData,
+  threshold = 128,
+  amplify = 5
+) {
   const yImageData = new ImageData(ogImageData.width, ogImageData.height);
   const cbImageData = new ImageData(ogImageData.width, ogImageData.height);
   const crImageData = new ImageData(ogImageData.width, ogImageData.height);
@@ -32,19 +36,36 @@ export function extractColorChannels(ogImageData) {
     const cb = 128 - 0.168736 * r - 0.331264 * g + 0.5 * b;
     const cr = 128 + 0.5 * r - 0.460525 * g - 0.081975 * b;
 
+    // Luminance
     yImageData.data[i] = y;
     yImageData.data[i + 1] = y;
     yImageData.data[i + 2] = y;
     yImageData.data[i + 3] = 255;
 
-    cbImageData.data[i] = cb;
-    cbImageData.data[i + 1] = cb;
-    cbImageData.data[i + 2] = cb;
+    // Blue Chrominance
+    if (cb > threshold) {
+      cbImageData.data[i] = 0;
+      cbImageData.data[i + 1] = 0;
+      cbImageData.data[i + 2] = Math.min(255, (cb - threshold) * amplify);
+    } else {
+      // Show white elsewhere
+      cbImageData.data[i] = 255;
+      cbImageData.data[i + 1] = 255;
+      cbImageData.data[i + 2] = 255;
+    }
     cbImageData.data[i + 3] = 255;
 
-    crImageData.data[i] = cr;
-    crImageData.data[i + 1] = cr;
-    crImageData.data[i + 2] = cr;
+    // Red Chrominance
+    if (cr > threshold) {
+      crImageData.data[i] = Math.min(255, (cr - threshold) * amplify);
+      crImageData.data[i + 1] = 0;
+      crImageData.data[i + 2] = 0;
+    } else {
+      // Show white elsewhere
+      crImageData.data[i] = 255;
+      crImageData.data[i + 1] = 255;
+      crImageData.data[i + 2] = 255;
+    }
     crImageData.data[i + 3] = 255;
   }
 
