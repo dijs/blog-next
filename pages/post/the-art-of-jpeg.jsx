@@ -1,22 +1,39 @@
 import { useEffect, useRef, useState } from 'react';
 import PostContainer from '../../components/PostContainer';
 import styles from '../../styles/the-art-of-jpeg.module.css';
+import {
+  drawImageDataToCanvas,
+  extractColorChannels,
+  getImageDataFromBlob,
+} from '../../utils/jpg';
 
 export default function ArtOfJPEG() {
   const imgRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [fileSize, setFileSize] = useState(0);
 
-  function processImage() {
+  const yImgRef = useRef(null);
+  const cbImgRef = useRef(null);
+  const crImgRef = useRef(null);
+
+  async function processImage() {
     setSize({
       width: imgRef.current.naturalWidth,
       height: imgRef.current.naturalHeight,
     });
-    fetch(imgRef.current.src)
-      .then((response) => response.blob())
-      .then((blob) => {
-        setFileSize(Math.ceil(blob.size / 1024));
-      });
+    const resp = await fetch(imgRef.current.src);
+    const blob = await resp.blob();
+    setFileSize(Math.ceil(blob.size / 1024));
+
+    // Blob to ImageData?
+    const ogImageData = await getImageDataFromBlob(blob);
+
+    const { yImageData, cbImageData, crImageData } =
+      extractColorChannels(ogImageData);
+
+    yImgRef.current.src = drawImageDataToCanvas(yImageData);
+    cbImgRef.current.src = drawImageDataToCanvas(cbImageData);
+    crImgRef.current.src = drawImageDataToCanvas(crImageData);
   }
 
   useEffect(() => {
@@ -69,6 +86,10 @@ export default function ArtOfJPEG() {
             Playboy magazine centerfold in 1972. The image has become a standard
             test image in the field of image processing, and today, we will use
             it to explore how JPEG works.
+            <br />
+            <br />
+            Feel free to upload your own image using the file input below the
+            picture!
           </div>
           <div className={styles.info}>
             <dl>
@@ -81,6 +102,21 @@ export default function ArtOfJPEG() {
             </dl>
           </div>
         </div>
+        <section>
+          <h2>First step: Color Space Conversion</h2>
+          <p>
+            JPEG starts with a color space conversion from RGB to YCbCr. This
+            separates the image into one luminance (Y) and two chrominance (Cb
+            and Cr) components. The human eye is more sensitive to luminance
+            than chrominance, allowing JPEG to compress the chrominance channels
+            more aggressively without significant perceived loss in quality.
+          </p>
+          <div className={styles.channelImages}>
+            <img ref={yImgRef} alt="Luminance Channel" />
+            <img ref={cbImgRef} alt="Chrominance Blue Channel" />
+            <img ref={crImgRef} alt="Chrominance Red Channel" />
+          </div>
+        </section>
       </div>
     </PostContainer>
   );

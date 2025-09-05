@@ -29,3 +29,12 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.channelImages {
+  display: flex;
+  justify-content: space-between;
+}
+
+.channelImages img {
+  width: 30%;
+}
