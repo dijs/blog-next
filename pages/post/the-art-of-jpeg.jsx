@@ -13,6 +13,7 @@ import {
   drawPresenceTable,
   drawStaticQuantizationTable,
   drawQuantizedTable,
+  getOrderedData,
 } from '../../utils/jpg';
 
 function Section({ number, title, children }) {
@@ -324,14 +325,19 @@ export default function ArtOfJPEG() {
         <Section number={4} title="Entropy Coding">
           <p>
             Look at the <span style={{ color: 'red' }}>red zig-zag</span> line
-            in the last table, it shows the order in which the quantized DCT
-            coefficients are read for entropy coding. This ordering helps to
+            in the last table, it shows the <b>order</b> in which the quantized
+            DCT coefficients are read for entropy coding. This ordering helps to
             group low-frequency coefficients (which are more likely to be
             non-zero) together, followed by high-frequency coefficients (which
             are more likely to be zero). This arrangement is beneficial for the
             subsequent entropy coding step, as it increases the efficiency of
             compression algorithms like Huffman coding or arithmetic coding.
           </p>
+          <pre className={styles.values}>
+            {getOrderedData(selectedBlock.data).map((value, index) => (
+              <span key={index}>{value}, </span>
+            ))}
+          </pre>
         </Section>
       </div>
     </PostContainer>

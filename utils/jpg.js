@@ -446,7 +446,7 @@ export function drawStaticQuantizationTable() {
   return canvas.toDataURL();
 }
 
-export function drawQuantizedTable(selectedData, quality = 50) {
+function getQuantizedCoefficients(selectedData, quality = 50) {
   const coefficients = dct2D(selectedData);
 
   // Scale quantization table based on quality (simple linear scaling for demo)
@@ -458,11 +458,15 @@ export function drawQuantizedTable(selectedData, quality = 50) {
   );
 
   // Quantize the coefficients
-  const quantizedCoeffs = coefficients.map((row, u) =>
+  return coefficients.map((row, u) =>
     row.map((value, v) => Math.round(value / scaledQuantTable[u][v]))
   );
+}
 
-  if (quantizedCoeffs.length < 8 || quantizedCoeffs[0].length < 8) {
+export function drawQuantizedTable(selectedData, quality = 50) {
+  const coefficients = getQuantizedCoefficients(selectedData, quality);
+
+  if (coefficients.length < 8 || coefficients[0].length < 8) {
     return null;
   }
 
@@ -485,7 +489,7 @@ export function drawQuantizedTable(selectedData, quality = 50) {
       ctx.strokeRect(startX, startY, blockSize, blockSize);
 
       // Draw the quantized coefficient value
-      const coeff = quantizedCoeffs[u][v];
+      const coeff = coefficients[u][v];
       ctx.fillStyle = 'black';
       ctx.font = '16px Arial';
       ctx.textAlign = 'center';
@@ -511,4 +515,19 @@ export function drawQuantizedTable(selectedData, quality = 50) {
   ctx.stroke();
 
   return canvas.toDataURL();
+}
+
+export function getOrderedData(selectedData) {
+  const coefficients = getQuantizedCoefficients(selectedData);
+
+  if (coefficients.length < 8 || coefficients[0].length < 8) {
+    return [];
+  }
+
+  const ordered = [];
+  for (let k = 0; k < zigZagOrder.length; k++) {
+    const [u, v] = zigZagOrder[k];
+    ordered.push(coefficients[u][v]);
+  }
+  return ordered;
 }

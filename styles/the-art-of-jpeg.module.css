@@ -87,3 +87,17 @@
 .dctSection figcaption {
   font-size: 0.875rem;
 }
+
+.values {
+  font-family: monospace;
+  white-space: pre;
+  max-width: 400px;
+  /* overflow-y: auto; */
+  overflow-wrap: anywhere;
+  background: #f0f0f0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  line-height: 1.5;
+}
