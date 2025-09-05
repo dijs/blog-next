@@ -6,6 +6,7 @@ import {
   drawImageDataToCanvas,
   extractColorChannels,
   getImageDataFromBlob,
+  uniqueColorCount,
 } from '../../utils/jpg';
 
 function Section({ number, title, children }) {
@@ -35,6 +36,7 @@ export default function ArtOfJPEG() {
   const imgRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [fileSize, setFileSize] = useState(0);
+  const [uniqueColors, setUniqueColors] = useState(0);
 
   const [colorChannelThreshold, setColorChannelThreshold] = useState(120);
   const [colorChannelAmplify, setColorChannelAmplify] = useState(3);
@@ -59,6 +61,8 @@ export default function ArtOfJPEG() {
 
     // Blob to ImageData?
     const ogImageData = await getImageDataFromBlob(blob);
+
+    setUniqueColors(uniqueColorCount(ogImageData));
 
     const { yImageData, cbImageData, crImageData } = extractColorChannels(
       ogImageData,
@@ -147,7 +151,9 @@ export default function ArtOfJPEG() {
                 {size.width} x {size.height}
               </dd>
               <dt>Size in kilobytes:</dt>
-              <dd>{fileSize}</dd>
+              <dd>{fileSize.toLocaleString()}</dd>
+              <dt>Unique colors:</dt>
+              <dd>{uniqueColors.toLocaleString()}</dd>
             </dl>
           </div>
         </div>

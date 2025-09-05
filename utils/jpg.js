@@ -17,6 +17,18 @@ export function getImageDataFromBlob(blob) {
   });
 }
 
+export function uniqueColorCount(imageData) {
+  const colorSet = new Set();
+  for (let i = 0; i < imageData.data.length; i += 4) {
+    const r = imageData.data[i];
+    const g = imageData.data[i + 1];
+    const b = imageData.data[i + 2];
+    const a = imageData.data[i + 3];
+    colorSet.add(`${r},${g},${b},${a}`);
+  }
+  return colorSet.size;
+}
+
 export function extractColorChannels(
   ogImageData,
   threshold = 128,

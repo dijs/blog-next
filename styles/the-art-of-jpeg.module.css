@@ -61,11 +61,10 @@
 
 .subsampledChannels {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .subsampledChannels img {
-  width: 100%;
-  flex: 1;
+  width: 50%;
   image-rendering: pixelated;
 }
