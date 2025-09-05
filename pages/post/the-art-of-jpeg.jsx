@@ -7,6 +7,29 @@ import {
   getImageDataFromBlob,
 } from '../../utils/jpg';
 
+function Section({ number, title, children }) {
+  return (
+    <section>
+      <h2>
+        <span className={styles.sectionNumber}>
+          {number}
+          <sup>
+            {number === 1
+              ? 'st'
+              : number === 2
+              ? 'nd'
+              : number === 3
+              ? 'rd'
+              : 'th'}
+          </sup>
+        </span>
+        <span className={styles.sectionIcon}>❖</span> {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
+
 export default function ArtOfJPEG() {
   const imgRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -18,6 +41,11 @@ export default function ArtOfJPEG() {
   const yImgRef = useRef(null);
   const cbImgRef = useRef(null);
   const crImgRef = useRef(null);
+
+  const [subsampleAmount, setSubsampleAmount] = useState(2);
+
+  const subCbImgRef = useRef(null);
+  const subCrImgRef = useRef(null);
 
   async function processImage() {
     setSize({
@@ -108,8 +136,7 @@ export default function ArtOfJPEG() {
             </dl>
           </div>
         </div>
-        <section>
-          <h2>First step: Color Space Conversion</h2>
+        <Section number={1} title="Color Space Conversion">
           <p>
             JPEG starts with a color space conversion from RGB to YCbCr. This
             separates the image into one luminance (Y) and two chrominance (Cb
@@ -154,7 +181,40 @@ export default function ArtOfJPEG() {
             amplification for the chrominance channels, demonstrating how JPEG
             can manipulate these channels for compression.
           </p>
-        </section>
+        </Section>
+
+        <Section number={2} title="Chroma Subsampling">
+          <p>
+            After color space conversion, JPEG typically applies chroma
+            subsampling. This reduces the resolution of the chrominance channels
+            (Cb and Cr) relative to the luminance channel (Y). Common
+            subsampling ratios include 4:4:4 (no subsampling), 4:2:2, and 4:2:0.
+            By reducing the amount of chrominance data, JPEG can achieve
+            significant compression while maintaining visual quality.
+          </p>
+
+          <div>
+            <img ref={subCbImgRef} alt="Subsampled Chrominance Blue Channel" />
+            <img ref={subCrImgRef} alt="Subsampled Chrominance Red Channel" />
+          </div>
+
+          <label>
+            Subsampling Amount: {subsampleAmount}
+            <input
+              type="range"
+              min="1"
+              max="10"
+              value={subsampleAmount}
+              onChange={(e) => setSubsampleAmount(parseInt(e.target.value, 10))}
+            />
+          </label>
+
+          <p>
+            The images above illustrate the effect of chroma subsampling on the
+            Cb and Cr channels. Notice how the resolution is reduced, which
+            contributes to overall file size reduction in JPEG compression.
+          </p>
+        </Section>
       </div>
     </PostContainer>
   );
