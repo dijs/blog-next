@@ -129,7 +129,6 @@ export default function ArtOfJPEG() {
   }
 
   // TODO:
-  // render zig-zag order
   // render huffman encoded values
   // show uncompressed vs compressed size
 

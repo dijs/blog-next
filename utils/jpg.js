@@ -347,6 +347,73 @@ const quantTable = [
   [72, 92, 95, 98, 112, 100, 103, 99],
 ];
 
+const zigZagOrder = [
+  [0, 0],
+  [0, 1],
+  [1, 0],
+  [2, 0],
+  [1, 1],
+  [0, 2],
+  [0, 3],
+  [1, 2],
+  [2, 1],
+  [3, 0],
+  [4, 0],
+  [3, 1],
+  [2, 2],
+  [1, 3],
+  [0, 4],
+  [0, 5],
+  [1, 4],
+  [2, 3],
+  [3, 2],
+  [4, 1],
+  [5, 0],
+  [6, 0],
+  [5, 1],
+  [4, 2],
+  [3, 3],
+  [2, 4],
+  [1, 5],
+  [0, 6],
+  [0, 7],
+  [1, 6],
+  [2, 5],
+  [3, 4],
+  [4, 3],
+  [5, 2],
+  [6, 1],
+  [7, 0],
+  [7, 1],
+  [6, 2],
+  [5, 3],
+  [4, 4],
+  [3, 5],
+  [2, 6],
+  [1, 7],
+  [2, 7],
+  [3, 6],
+  [4, 5],
+  [5, 4],
+  [6, 3],
+  [7, 2],
+  [7, 3],
+  [6, 4],
+  [5, 5],
+  [4, 6],
+  [3, 7],
+  [4, 7],
+  [5, 6],
+  [6, 5],
+  [7, 4],
+  [7, 5],
+  [6, 6],
+  [5, 7],
+  [6, 7],
+  [7, 6],
+  [7, 7],
+];
+
 export function drawStaticQuantizationTable() {
   const blockSize = 32;
   const canvas = document.createElement('canvas');
@@ -426,6 +493,22 @@ export function drawQuantizedTable(selectedData, quality = 50) {
       ctx.fillText(coeff, startX + blockSize / 2, startY + blockSize / 2);
     }
   }
+
+  // render zig-zag order with transparent red line overlay
+  ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let k = 0; k < zigZagOrder.length; k++) {
+    const [u, v] = zigZagOrder[k];
+    const x = u * blockSize + blockSize / 2;
+    const y = v * blockSize + blockSize / 2;
+    if (k === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
+  }
+  ctx.stroke();
 
   return canvas.toDataURL();
 }
