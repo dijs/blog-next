@@ -7,6 +7,9 @@ import {
   extractColorChannels,
   getImageDataFromBlob,
   uniqueColorCount,
+  drawGridOverlayToCanvas,
+  drawZoomedBlockToCanvas,
+  drawFrequencyPatternTable,
 } from '../../utils/jpg';
 
 function Section({ number, title, children }) {
@@ -50,6 +53,14 @@ export default function ArtOfJPEG() {
   const subCbImgRef = useRef(null);
   const subCrImgRef = useRef(null);
 
+  const gridImgRef = useRef(null);
+  const zoomImgRef = useRef(null);
+  const [freqPatternImgData, setFreqPatternImgData] = useState(null);
+
+  useEffect(() => {
+    setFreqPatternImgData(drawFrequencyPatternTable());
+  }, []);
+
   async function processImage() {
     setSize({
       width: imgRef.current.naturalWidth,
@@ -82,6 +93,13 @@ export default function ArtOfJPEG() {
       crImageData,
       subsampleAmount
     );
+
+    gridImgRef.current.src = drawGridOverlayToCanvas(yImageData);
+    updateZoomImage({
+      target: zoomImgRef.current,
+      clientX: 0,
+      clientY: 0,
+    });
   }
 
   useEffect(() => {
@@ -94,6 +112,20 @@ export default function ArtOfJPEG() {
     colorChannelAmplify,
     subsampleAmount,
   ]);
+
+  function updateZoomImage(event) {
+    zoomImgRef.current.src = drawZoomedBlockToCanvas(event);
+  }
+
+  // TODO:
+  // render frequency patterns table
+  // render coefficients table (presence of the various frequencies) - via the DCT method
+  // render quantization table
+  // render zig-zag order
+  // render huffman encoded values
+  // show uncompressed vs compressed size
+
+  // Call out that chroma subsampling and quantization are the lossy steps
 
   return (
     <PostContainer
@@ -235,6 +267,35 @@ export default function ArtOfJPEG() {
             Cb and Cr channels. Notice how the resolution is reduced, which
             contributes to overall file size reduction in JPEG compression.
           </p>
+        </Section>
+
+        <Section number={3} title="Discrete Cosine Transform">
+          <p>
+            The Discrete Cosine Transform (DCT) is a mathematical operation that
+            transforms spatial domain data (pixel values) into frequency domain
+            data. In JPEG, the image is divided into 8x8 pixel blocks, and each
+            block undergoes DCT. This transformation helps to separate the image
+            into parts of differing importance with respect to human perception.
+          </p>
+          <div className={styles.dctSection}>
+            <figure>
+              <img
+                ref={gridImgRef}
+                alt="8x8 Pixel Grid Overlay"
+                onMouseMove={updateZoomImage}
+                onClick={updateZoomImage}
+              />
+              <figcaption>Hover or click to zoom into an 8x8 block</figcaption>
+            </figure>
+            <figure>
+              <img ref={zoomImgRef} alt="Zoomed-in 8x8 Block" />
+              <figcaption>Zoomed-in view of selected 8x8 block</figcaption>
+            </figure>
+            <figure>
+              <img src={freqPatternImgData} alt="Frequency Patterns Table" />
+              <figcaption>Frequency patterns in an 8x8 DCT block</figcaption>
+            </figure>
+          </div>
         </Section>
       </div>
     </PostContainer>
