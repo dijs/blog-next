@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import PostContainer from '../../components/PostContainer';
 import styles from '../../styles/the-art-of-jpeg.module.css';
 import {
+  drawSubsampledImageDataToCanvas,
   drawImageDataToCanvas,
   extractColorChannels,
   getImageDataFromBlob,
@@ -68,13 +69,27 @@ export default function ArtOfJPEG() {
     yImgRef.current.src = drawImageDataToCanvas(yImageData);
     cbImgRef.current.src = drawImageDataToCanvas(cbImageData);
     crImgRef.current.src = drawImageDataToCanvas(crImageData);
+
+    subCbImgRef.current.src = drawSubsampledImageDataToCanvas(
+      cbImageData,
+      subsampleAmount
+    );
+    subCrImgRef.current.src = drawSubsampledImageDataToCanvas(
+      crImageData,
+      subsampleAmount
+    );
   }
 
   useEffect(() => {
     if (imgRef.current) {
       processImage();
     }
-  }, [imgRef.current, colorChannelThreshold, colorChannelAmplify]);
+  }, [
+    imgRef.current,
+    colorChannelThreshold,
+    colorChannelAmplify,
+    subsampleAmount,
+  ]);
 
   return (
     <PostContainer
@@ -151,7 +166,7 @@ export default function ArtOfJPEG() {
           </div>
           <div className={styles.sliderContainer}>
             <label>
-              Chrominance Threshold: {colorChannelThreshold}
+              Chrominance Threshold:
               <input
                 type="range"
                 min="0"
@@ -163,7 +178,7 @@ export default function ArtOfJPEG() {
               />
             </label>
             <label>
-              Chrominance Amplify: {colorChannelAmplify}
+              Chrominance Amplify:
               <input
                 type="range"
                 min="1"
@@ -193,17 +208,17 @@ export default function ArtOfJPEG() {
             significant compression while maintaining visual quality.
           </p>
 
-          <div>
+          <div className={styles.subsampledChannels}>
             <img ref={subCbImgRef} alt="Subsampled Chrominance Blue Channel" />
             <img ref={subCrImgRef} alt="Subsampled Chrominance Red Channel" />
           </div>
 
           <label>
-            Subsampling Amount: {subsampleAmount}
+            Subsampling Amount:
             <input
               type="range"
               min="1"
-              max="10"
+              max="20"
               value={subsampleAmount}
               onChange={(e) => setSubsampleAmount(parseInt(e.target.value, 10))}
             />

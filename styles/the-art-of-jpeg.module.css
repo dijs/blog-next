@@ -58,3 +58,14 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.subsampledChannels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subsampledChannels img {
+  width: 100%;
+  flex: 1;
+  image-rendering: pixelated;
+}

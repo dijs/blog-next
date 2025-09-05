@@ -80,3 +80,53 @@ export function drawImageDataToCanvas(imageData) {
   ctx.putImageData(imageData, 0, 0);
   return canvas.toDataURL();
 }
+
+export function drawSubsampledImageDataToCanvas(imageData, subsampleAmount) {
+  const canvas = document.createElement('canvas');
+  canvas.width = imageData.width / subsampleAmount;
+  canvas.height = imageData.height / subsampleAmount;
+  const ctx = canvas.getContext('2d');
+
+  // Create a temporary canvas to hold the subsampled data
+  const tempCanvas = document.createElement('canvas');
+  tempCanvas.width = Math.ceil(imageData.width / subsampleAmount);
+  tempCanvas.height = Math.ceil(imageData.height / subsampleAmount);
+  const tempCtx = tempCanvas.getContext('2d');
+  const tempImageData = tempCtx.createImageData(
+    tempCanvas.width,
+    tempCanvas.height
+  );
+
+  // Subsample the image data
+  for (let y = 0; y < imageData.height; y += subsampleAmount) {
+    for (let x = 0; x < imageData.width; x += subsampleAmount) {
+      const srcIndex = (y * imageData.width + x) * 4;
+      const destIndex =
+        (Math.floor(y / subsampleAmount) * tempCanvas.width +
+          Math.floor(x / subsampleAmount)) *
+        4;
+
+      tempImageData.data[destIndex] = imageData.data[srcIndex];
+      tempImageData.data[destIndex + 1] = imageData.data[srcIndex + 1];
+      tempImageData.data[destIndex + 2] = imageData.data[srcIndex + 2];
+      tempImageData.data[destIndex + 3] = imageData.data[srcIndex + 3];
+    }
+  }
+
+  // Draw the subsampled data back to the original canvas, scaling it up
+  ctx.imageSmoothingEnabled = false; // Disable smoothing for pixelated effect
+  ctx.putImageData(tempImageData, 0, 0);
+  ctx.drawImage(
+    tempCanvas,
+    0,
+    0,
+    tempCanvas.width,
+    tempCanvas.height,
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  return canvas.toDataURL();
+}
