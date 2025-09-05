@@ -270,6 +270,10 @@ export function drawFrequencyPatternTable() {
 
 // Naive 8x8 Discrete Cosine Transform (DCT-II)
 function dct2D(block) {
+  if (block.length !== 8 || block[0].length !== 8) {
+    return [];
+  }
+
   const N = 8;
   const result = Array.from({ length: N }, () => Array(N).fill(0));
 
@@ -297,6 +301,10 @@ export function drawPresenceTable(selectedData) {
   // selectedData is a 2D array of numbers indicating luminance
   const coefficients = dct2D(selectedData);
 
+  if (coefficients.length < 8 || coefficients[0].length < 8) {
+    return null;
+  }
+
   const blockSize = 32;
   const canvas = document.createElement('canvas');
   canvas.width = blockSize * 8;
@@ -317,6 +325,100 @@ export function drawPresenceTable(selectedData) {
 
       // Draw the coefficient value
       const coeff = Math.round(coefficients[u][v]);
+      ctx.fillStyle = 'black';
+      ctx.font = '16px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(coeff, startX + blockSize / 2, startY + blockSize / 2);
+    }
+  }
+
+  return canvas.toDataURL();
+}
+
+const quantTable = [
+  [16, 11, 10, 16, 24, 40, 51, 61],
+  [12, 12, 14, 19, 26, 58, 60, 55],
+  [14, 13, 16, 24, 40, 57, 69, 56],
+  [14, 17, 22, 29, 51, 87, 80, 62],
+  [18, 22, 37, 56, 68, 109, 103, 77],
+  [24, 35, 55, 64, 81, 104, 113, 92],
+  [49, 64, 78, 87, 103, 121, 120, 101],
+  [72, 92, 95, 98, 112, 100, 103, 99],
+];
+
+export function drawStaticQuantizationTable() {
+  const blockSize = 32;
+  const canvas = document.createElement('canvas');
+  canvas.width = blockSize * 8;
+  canvas.height = blockSize * 8;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 1;
+
+  for (let u = 0; u < 8; u++) {
+    for (let v = 0; v < 8; v++) {
+      const startX = u * blockSize;
+      const startY = v * blockSize;
+
+      // Draw the square
+      ctx.strokeRect(startX, startY, blockSize, blockSize);
+
+      // Draw the quantization value
+      const value = quantTable[u][v];
+      ctx.fillStyle = 'black';
+      ctx.font = '16px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(value, startX + blockSize / 2, startY + blockSize / 2);
+    }
+  }
+
+  return canvas.toDataURL();
+}
+
+export function drawQuantizedTable(selectedData, quality = 50) {
+  const coefficients = dct2D(selectedData);
+
+  // Scale quantization table based on quality (simple linear scaling for demo)
+  const scale = quality < 50 ? 5000 / quality : 200 - quality * 2;
+  const scaledQuantTable = quantTable.map((row) =>
+    row.map((value) =>
+      Math.max(1, Math.min(255, Math.floor((value * scale + 50) / 100)))
+    )
+  );
+
+  // Quantize the coefficients
+  const quantizedCoeffs = coefficients.map((row, u) =>
+    row.map((value, v) => Math.round(value / scaledQuantTable[u][v]))
+  );
+
+  if (quantizedCoeffs.length < 8 || quantizedCoeffs[0].length < 8) {
+    return null;
+  }
+
+  const blockSize = 32;
+  const canvas = document.createElement('canvas');
+  canvas.width = blockSize * 8;
+  canvas.height = blockSize * 8;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 1;
+
+  for (let u = 0; u < 8; u++) {
+    for (let v = 0; v < 8; v++) {
+      const startX = u * blockSize;
+      const startY = v * blockSize;
+
+      // Draw the square
+      ctx.strokeRect(startX, startY, blockSize, blockSize);
+
+      // Draw the quantized coefficient value
+      const coeff = quantizedCoeffs[u][v];
       ctx.fillStyle = 'black';
       ctx.font = '16px Arial';
       ctx.textAlign = 'center';

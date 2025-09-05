@@ -11,6 +11,8 @@ import {
   drawZoomedBlockToCanvas,
   drawFrequencyPatternTable,
   drawPresenceTable,
+  drawStaticQuantizationTable,
+  drawQuantizedTable,
 } from '../../utils/jpg';
 
 function Section({ number, title, children }) {
@@ -59,8 +61,13 @@ export default function ArtOfJPEG() {
   const [freqPatternImgData, setFreqPatternImgData] = useState(null);
   const [selectedBlock, setSelectedBlock] = useState({ url: '', data: [] });
 
+  const [presenceImgData, setPresenceImgData] = useState(null);
+  const [staticQuantData, setStaticQuantData] = useState(null);
+  const [quantizedData, setQuantizedData] = useState(null);
+
   useEffect(() => {
     setFreqPatternImgData(drawFrequencyPatternTable());
+    setStaticQuantData(drawStaticQuantizationTable());
   }, []);
 
   async function processImage() {
@@ -116,15 +123,12 @@ export default function ArtOfJPEG() {
   ]);
 
   function updateZoomImage(event) {
-    // zoomImgRef.current.src = drawZoomedBlockToCanvas(event).url;
-
     setSelectedBlock(drawZoomedBlockToCanvas(event));
+    setQuantizedData(drawQuantizedTable(selectedBlock.data));
+    setPresenceImgData(drawPresenceTable(selectedBlock.data));
   }
 
   // TODO:
-  // render frequency patterns table
-  // render coefficients table (presence of the various frequencies) - via the DCT method
-  // render quantization table
   // render zig-zag order
   // render huffman encoded values
   // show uncompressed vs compressed size
@@ -304,11 +308,16 @@ export default function ArtOfJPEG() {
               <figcaption>Frequency patterns in an 8x8 DCT block</figcaption>
             </figure>
             <figure>
-              <img
-                src={drawPresenceTable(selectedBlock.data)}
-                alt="Frequency Presence Table"
-              />
+              <img src={presenceImgData} alt="Frequency Presence Table" />
               <figcaption>Presence of frequency table</figcaption>
+            </figure>
+            <figure>
+              <img src={staticQuantData} alt="Static Quantization Table" />
+              <figcaption>Standard JPEG Quantization Table</figcaption>
+            </figure>
+            <figure>
+              <img src={quantizedData} alt="Quantized DCT Coefficients" />
+              <figcaption>Quantized DCT Coefficients</figcaption>
             </figure>
           </div>
         </Section>
