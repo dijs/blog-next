@@ -129,7 +129,7 @@ export default function ArtOfJPEG() {
   }
 
   // TODO:
-  // render huffman encoded values
+  // render huffman encoded values (before and after)
   // show uncompressed vs compressed size
 
   // Call out that chroma subsampling and quantization are the lossy steps
@@ -319,6 +319,19 @@ export default function ArtOfJPEG() {
               <figcaption>Quantized DCT Coefficients</figcaption>
             </figure>
           </div>
+        </Section>
+
+        <Section number={4} title="Entropy Coding">
+          <p>
+            Look at the <span style={{ color: 'red' }}>red zig-zag</span> line
+            in the last table, it shows the order in which the quantized DCT
+            coefficients are read for entropy coding. This ordering helps to
+            group low-frequency coefficients (which are more likely to be
+            non-zero) together, followed by high-frequency coefficients (which
+            are more likely to be zero). This arrangement is beneficial for the
+            subsequent entropy coding step, as it increases the efficiency of
+            compression algorithms like Huffman coding or arithmetic coding.
+          </p>
         </Section>
       </div>
     </PostContainer>
