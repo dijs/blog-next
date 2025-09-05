@@ -4,15 +4,15 @@ import Head from 'next/head';
 import Script from 'next/script';
 import rehypeRaw from 'rehype-raw';
 
-import Header from '../../components/Header';
-import Back from '../../components/Back';
-import buildPosts from '../../scripts/build-posts';
+import Header from './Header';
+import Back from './Back';
 
-export default function Post({
+export default function PostContainer({
   metadata: { title = '', date = '', blurb = '' } = {},
   content,
   slug,
   number,
+  children,
 }) {
   useEffect(() => {
     // Add MathJax config and script only on client-side after hydration
@@ -68,9 +68,12 @@ export default function Post({
           </h1>
           <div className="date">{date}</div>
         </aside>
-        <main className="content">
-          <ReactMarkdown rehypePlugins={[rehypeRaw]} children={content} />
-        </main>
+        {content && (
+          <main className="content">
+            <ReactMarkdown rehypePlugins={[rehypeRaw]} children={content} />
+          </main>
+        )}
+        {children}
         <Script
           src="https://utteranc.es/client.js"
           repo="dijs/blog-next"
@@ -83,27 +86,4 @@ export default function Post({
       <Back />
     </div>
   );
-}
-
-export async function getStaticProps(ctx) {
-  const posts = buildPosts();
-  const index = posts.findIndex((p) => p.slug === ctx.params.slug);
-  const props = posts[index];
-  return {
-    props: {
-      ...props,
-      number: posts.length - index,
-    },
-  };
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: buildPosts().map(({ slug }) => ({
-      params: {
-        slug,
-      },
-    })),
-    fallback: false,
-  };
 }

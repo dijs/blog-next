@@ -1,0 +1,31 @@
+.root {
+  margin: 0 2rem;
+}
+
+.intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.info {
+  flex: 1;
+}
+
+.info dl {
+  margin: 0;
+}
+
+.info dt {
+  font-weight: bold;
+}
+
+.description {
+  flex: 0.75;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

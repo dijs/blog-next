@@ -1,0 +1,87 @@
+import { useEffect, useRef, useState } from 'react';
+import PostContainer from '../../components/PostContainer';
+import styles from '../../styles/the-art-of-jpeg.module.css';
+
+export default function ArtOfJPEG() {
+  const imgRef = useRef(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [fileSize, setFileSize] = useState(0);
+
+  function processImage() {
+    setSize({
+      width: imgRef.current.naturalWidth,
+      height: imgRef.current.naturalHeight,
+    });
+    fetch(imgRef.current.src)
+      .then((response) => response.blob())
+      .then((blob) => {
+        setFileSize(Math.ceil(blob.size / 1024));
+      });
+  }
+
+  useEffect(() => {
+    if (imgRef.current) {
+      processImage();
+    }
+  }, [imgRef.current]);
+
+  return (
+    <PostContainer
+      metadata={{
+        published: true,
+        title: 'The Art of JPEG',
+        blurb: 'An exploration of the JPEG image format.',
+        layout: 'post',
+        tags: ['jpeg', 'image', 'format', 'history', 'technology'],
+        date: 'Sep 5, 2025',
+      }}
+      slug="the-art-of-jpeg"
+      number={73}
+    >
+      <div className={styles.root}>
+        <div className={styles.intro}>
+          <div className={styles.imageContainer}>
+            <img
+              ref={imgRef}
+              src="/lenna.png"
+              alt="Lenna"
+              style={{ maxWidth: '300px' }}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = (event) => {
+                    imgRef.current.src = event.target.result;
+                    setTimeout(processImage, 0);
+                  };
+                  reader.readAsDataURL(file);
+                }
+              }}
+            />
+          </div>
+          <div className={styles.description}>
+            The famous Lenna image, often used in image processing research. A
+            fun fact that many developers may have missed: it was cropped from a
+            Playboy magazine centerfold in 1972. The image has become a standard
+            test image in the field of image processing, and today, we will use
+            it to explore how JPEG works.
+          </div>
+          <div className={styles.info}>
+            <dl>
+              <dt>Size in pixels:</dt>
+              <dd>
+                {size.width} x {size.height}
+              </dd>
+              <dt>Size in kilobytes:</dt>
+              <dd>{fileSize}</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </PostContainer>
+  );
+}

@@ -11,26 +11,39 @@ const slug = (text) =>
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
     .replace(/^-+|-+$/g, ''); // remove leading, trailing -
 
+const manualPosts = [
+  {
+    metadata: {
+      published: true,
+      title: 'The Art of JPEG',
+      blurb: 'An exploration of the JPEG image format.',
+      layout: 'post',
+      tags: ['jpeg', 'image', 'format', 'history', 'technology'],
+      date: 'Sep 5, 2025',
+    },
+    content: '',
+  },
+];
+
 export default function buildPosts() {
-  return (
-    fs
-      // use a path vercel would understand
-      .readdirSync(path.join('./posts'))
-      .map((name) => fs.readFileSync(path.join('./posts', name), 'utf8'))
-      .map((source) => metadataParser(source))
-      .filter(({ metadata: { published } }) => published)
-      .map((post) => {
-        post.metadata.date = new Date(post.metadata.date);
-        return post;
-      })
-      .sort((a, b) => +b.metadata.date - +a.metadata.date)
-      .map((post, index) => {
-        if (!post.metadata.blurb) post.metadata.blurb = 'Write something here!';
-        post.metadata.date = dateFns.format(post.metadata.date, 'MMM D, YYYY');
-        post.slug = slug(post.metadata.title);
-        post.index = index;
-        post.path = `/post/${post.slug}`;
-        return post;
-      })
-  );
+  const markdownPosts = fs
+    // use a path vercel would understand
+    .readdirSync(path.join('./posts'))
+    .map((name) => fs.readFileSync(path.join('./posts', name), 'utf8'))
+    .map((source) => metadataParser(source));
+  return [...markdownPosts, ...manualPosts]
+    .filter(({ metadata: { published } }) => published)
+    .map((post) => {
+      post.metadata.date = new Date(post.metadata.date);
+      return post;
+    })
+    .sort((a, b) => +b.metadata.date - +a.metadata.date)
+    .map((post, index) => {
+      if (!post.metadata.blurb) post.metadata.blurb = 'Write something here!';
+      post.metadata.date = dateFns.format(post.metadata.date, 'MMM D, YYYY');
+      post.slug = slug(post.metadata.title);
+      post.index = index;
+      post.path = `/post/${post.slug}`;
+      return post;
+    });
 }
