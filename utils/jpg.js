@@ -531,3 +531,73 @@ export function getOrderedData(selectedData) {
   }
   return ordered;
 }
+
+export function huffmanEncode(arr) {
+  // Frequency map
+  const freq = {};
+  for (const n of arr) freq[n] = (freq[n] || 0) + 1;
+
+  // Priority queue: [node, freq]
+  let pq = Object.entries(freq).map(([n, f]) => [{ sym: +n }, f]);
+
+  while (pq.length > 1) {
+    pq.sort((a, b) => a[1] - b[1]);
+    const [a, b] = pq.splice(0, 2);
+    pq.push([{ left: a[0], right: b[0] }, a[1] + b[1]]);
+  }
+
+  if (pq.length === 0) {
+    return {
+      codes: {},
+      encoded: '',
+      encodedHex: '',
+      tree: null,
+      compressionRatio: 0,
+      originalBits: 0,
+      compressedBits: 0,
+    };
+  }
+
+  const tree = pq[0][0];
+  const codes = {};
+
+  // Recursively assign codes
+  (function walk(node, prefix = '') {
+    if (node.sym !== undefined) {
+      codes[node.sym] = prefix || '0'; // leaf
+    } else {
+      walk(node.left, prefix + '0');
+      walk(node.right, prefix + '1');
+    }
+  })(tree);
+
+  // Encode
+  let encoded = '';
+  for (const n of arr) encoded += codes[n];
+
+  // Convert binary string to hex
+  let encodedHex = '';
+  // Pad to nearest byte boundary
+  const paddedBinary = encoded.padEnd(Math.ceil(encoded.length / 8) * 8, '0');
+  for (let i = 0; i < paddedBinary.length; i += 8) {
+    const byte = paddedBinary.substr(i, 8);
+    const hexByte = parseInt(byte, 2).toString(16).padStart(2, '0');
+    encodedHex += hexByte;
+  }
+
+  // Calculate compression statistics
+  const originalBits = arr.length * 8; // Assuming 8 bits per original value
+  const compressedBits = encoded.length;
+  const compressionRatio =
+    originalBits > 0 ? (1 - compressedBits / originalBits) * 100 : 0;
+
+  return {
+    codes,
+    encoded,
+    encodedHex: encodedHex.toUpperCase(),
+    tree,
+    compressionRatio: Math.round(compressionRatio * 100) / 100, // Round to 2 decimal places
+    originalBits,
+    compressedBits,
+  };
+}

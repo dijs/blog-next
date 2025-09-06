@@ -14,11 +14,12 @@ import {
   drawStaticQuantizationTable,
   drawQuantizedTable,
   getOrderedData,
+  huffmanEncode,
 } from '../../utils/jpg';
 
 function Section({ number, title, children }) {
   return (
-    <section>
+    <section className={styles.section}>
       <h2>
         <span className={styles.sectionNumber}>
           {number}
@@ -333,11 +334,28 @@ export default function ArtOfJPEG() {
             subsequent entropy coding step, as it increases the efficiency of
             compression algorithms like Huffman coding or arithmetic coding.
           </p>
-          <pre className={styles.values}>
-            {getOrderedData(selectedBlock.data).map((value, index) => (
-              <span key={index}>{value}, </span>
-            ))}
-          </pre>
+          <h3>Before Entropy Coding</h3>
+          <div className={styles.values}>
+            {getOrderedData(selectedBlock.data).join(', ')}
+          </div>
+          <h3>After Entropy Coding</h3>
+          <h4>Huffman Codes</h4>
+          <div className={styles.values}>
+            {JSON.stringify(
+              huffmanEncode(getOrderedData(selectedBlock.data)).codes,
+              null,
+              2
+            )}
+          </div>
+          <h4>Encoded Hex String</h4>
+          <div className={styles.values}>
+            {huffmanEncode(getOrderedData(selectedBlock.data)).encodedHex}
+          </div>
+          <h4>Compression Ratio</h4>
+          <div className={styles.values}>
+            {huffmanEncode(getOrderedData(selectedBlock.data)).compressionRatio}
+            %
+          </div>
         </Section>
       </div>
     </PostContainer>
