@@ -130,12 +130,6 @@ export default function ArtOfJPEG() {
     setPresenceImgData(drawPresenceTable(selectedBlock.data));
   }
 
-  // TODO:
-  // render huffman encoded values (before and after)
-  // show uncompressed vs compressed size
-
-  // Call out that chroma subsampling and quantization are the lossy steps
-
   return (
     <PostContainer
       metadata={{
@@ -151,6 +145,19 @@ export default function ArtOfJPEG() {
     >
       <div className={styles.root}>
         <div className={styles.intro}>
+          <div className={styles.description}>
+            <p>
+              The famous Lenna image, often used in image processing research. A
+              fun fact that many developers may have missed: it was cropped from
+              a Playboy magazine centerfold in 1972. The image has become a
+              standard test image in the field of image processing, and today,
+              we will use it to explore how JPEG works.
+            </p>
+            <p>
+              Feel free to upload your own image using the file input below the
+              picture!
+            </p>
+          </div>
           <div className={styles.imageContainer}>
             <img
               ref={imgRef}
@@ -173,17 +180,6 @@ export default function ArtOfJPEG() {
                 }
               }}
             />
-          </div>
-          <div className={styles.description}>
-            The famous Lenna image, often used in image processing research. A
-            fun fact that many developers may have missed: it was cropped from a
-            Playboy magazine centerfold in 1972. The image has become a standard
-            test image in the field of image processing, and today, we will use
-            it to explore how JPEG works.
-            <br />
-            <br />
-            Feel free to upload your own image using the file input below the
-            picture!
           </div>
           <div className={styles.info}>
             <dl>
@@ -240,8 +236,8 @@ export default function ArtOfJPEG() {
           <p>
             The images above show the Y, Cb, and Cr channels extracted from the
             original image. The sliders allow you to adjust the threshold and
-            amplification for the chrominance channels, demonstrating how JPEG
-            can manipulate these channels for compression.
+            amplification for the chrominance channels and are for visualization
+            purposes only.
           </p>
         </Section>
 
@@ -314,7 +310,9 @@ export default function ArtOfJPEG() {
             </figure>
             <figure>
               <img src={staticQuantData} alt="Static Quantization Table" />
-              <figcaption>Standard JPEG Quantization Table</figcaption>
+              <figcaption>
+                Standard JPEG Quantization Table. There are many.
+              </figcaption>
             </figure>
             <figure>
               <img src={quantizedData} alt="Quantized DCT Coefficients" />
@@ -322,7 +320,6 @@ export default function ArtOfJPEG() {
             </figure>
           </div>
         </Section>
-
         <Section number={4} title="Entropy Coding">
           <p>
             Look at the <span style={{ color: 'red' }}>red zig-zag</span> line
@@ -351,7 +348,7 @@ export default function ArtOfJPEG() {
           <div className={styles.values}>
             {huffmanEncode(getOrderedData(selectedBlock.data)).encodedHex}
           </div>
-          <h4>Compression Ratio</h4>
+          <h4>Block Level Compression Ratio</h4>
           <div className={styles.values}>
             {huffmanEncode(getOrderedData(selectedBlock.data)).compressionRatio}
             %
