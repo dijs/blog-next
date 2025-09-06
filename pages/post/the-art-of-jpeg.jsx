@@ -354,6 +354,18 @@ export default function ArtOfJPEG() {
             %
           </div>
         </Section>
+        <div>
+          <h3>Summary</h3>
+          <p>
+            In summary, JPEG compression is a complex process that involves
+            several stages, each contributing to the overall reduction in file
+            size while striving to maintain visual quality. Understanding these
+            processes not only provides insight into how digital images are
+            stored and transmitted but also highlights the ingenuity behind one
+            of the most widely used image formats in the world.
+          </p>
+          <p>I hope you enjoyed this deep dive into the art of JPEG!</p>
+        </div>
       </div>
     </PostContainer>
   );
