@@ -15,6 +15,10 @@ import {
   drawQuantizedTable,
   getOrderedData,
   huffmanEncode,
+  quantTable,
+  getPresenceCoefficients,
+  getQuantizedCoefficients,
+  zigZagOrder,
 } from '../../utils/jpg';
 
 function Section({ number, title, children }) {
@@ -37,6 +41,22 @@ function Section({ number, title, children }) {
       </h2>
       {children}
     </section>
+  );
+}
+
+function DataTable({ data }) {
+  return (
+    <table className={styles.blockTable}>
+      <tbody>
+        {data.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {row.map((value, colIndex) => (
+              <td key={colIndex}>{value}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
@@ -63,13 +83,13 @@ export default function ArtOfJPEG() {
   const [freqPatternImgData, setFreqPatternImgData] = useState(null);
   const [selectedBlock, setSelectedBlock] = useState({ url: '', data: [] });
 
-  const [presenceImgData, setPresenceImgData] = useState(null);
-  const [staticQuantData, setStaticQuantData] = useState(null);
+  // const [presenceImgData, setPresenceImgData] = useState(null);
+  // const [staticQuantData, setStaticQuantData] = useState(null);
   const [quantizedData, setQuantizedData] = useState(null);
 
   useEffect(() => {
     setFreqPatternImgData(drawFrequencyPatternTable());
-    setStaticQuantData(drawStaticQuantizationTable());
+    // setStaticQuantData(drawStaticQuantizationTable());
   }, []);
 
   async function processImage() {
@@ -126,8 +146,8 @@ export default function ArtOfJPEG() {
 
   function updateZoomImage(event) {
     setSelectedBlock(drawZoomedBlockToCanvas(event));
-    setQuantizedData(drawQuantizedTable(selectedBlock.data));
-    setPresenceImgData(drawPresenceTable(selectedBlock.data));
+    // setQuantizedData(drawQuantizedTable(selectedBlock.data));
+    // setPresenceImgData(drawPresenceTable(selectedBlock.data));
   }
 
   return (
@@ -305,17 +325,39 @@ export default function ArtOfJPEG() {
               <figcaption>Frequency patterns in an 8x8 DCT block</figcaption>
             </figure>
             <figure>
-              <img src={presenceImgData} alt="Frequency Presence Table" />
+              <DataTable data={getPresenceCoefficients(selectedBlock.data)} />
               <figcaption>Presence of frequency table</figcaption>
             </figure>
             <figure>
-              <img src={staticQuantData} alt="Static Quantization Table" />
+              <DataTable data={quantTable} />
               <figcaption>
                 Standard JPEG Quantization Table. There are many.
               </figcaption>
             </figure>
-            <figure>
-              <img src={quantizedData} alt="Quantized DCT Coefficients" />
+            <figure style={{ position: 'relative' }}>
+              <DataTable data={getQuantizedCoefficients(selectedBlock.data)} />
+              <svg
+                viewBox="0 0 256 256"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '256px',
+                  height: '256px',
+                  pointerEvents: 'none',
+                }}
+              >
+                <polyline
+                  points={zigZagOrder
+                    .map(([x, y]) => `${x * 32 + 16},${y * 32 + 16}`)
+                    .join(' ')}
+                  style={{
+                    fill: 'none',
+                    stroke: 'rgba(255,0,0,0.7)',
+                    strokeWidth: 3,
+                  }}
+                />
+              </svg>
               <figcaption>Quantized DCT Coefficients</figcaption>
             </figure>
           </div>

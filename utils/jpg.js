@@ -297,6 +297,14 @@ function dct2D(block) {
   return result;
 }
 
+export function getPresenceCoefficients(selectedData) {
+  const coefficients = dct2D(selectedData);
+  if (coefficients.length < 8 || coefficients[0].length < 8) {
+    return [];
+  }
+  return coefficients.map((row) => row.map(Math.round));
+}
+
 export function drawPresenceTable(selectedData) {
   // selectedData is a 2D array of numbers indicating luminance
   const coefficients = dct2D(selectedData);
@@ -336,7 +344,7 @@ export function drawPresenceTable(selectedData) {
   return canvas.toDataURL();
 }
 
-const quantTable = [
+export const quantTable = [
   [16, 11, 10, 16, 24, 40, 51, 61],
   [12, 12, 14, 19, 26, 58, 60, 55],
   [14, 13, 16, 24, 40, 57, 69, 56],
@@ -347,7 +355,7 @@ const quantTable = [
   [72, 92, 95, 98, 112, 100, 103, 99],
 ];
 
-const zigZagOrder = [
+export const zigZagOrder = [
   [0, 0],
   [0, 1],
   [1, 0],
@@ -446,7 +454,7 @@ export function drawStaticQuantizationTable() {
   return canvas.toDataURL();
 }
 
-function getQuantizedCoefficients(selectedData, quality = 50) {
+export function getQuantizedCoefficients(selectedData, quality = 50) {
   const coefficients = dct2D(selectedData);
 
   // Scale quantization table based on quality (simple linear scaling for demo)
