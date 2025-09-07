@@ -334,30 +334,34 @@ export default function ArtOfJPEG() {
                 Standard JPEG Quantization Table. There are many.
               </figcaption>
             </figure>
-            <figure style={{ position: 'relative' }}>
-              <DataTable data={getQuantizedCoefficients(selectedBlock.data)} />
-              <svg
-                viewBox="0 0 256 256"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '256px',
-                  height: '256px',
-                  pointerEvents: 'none',
-                }}
-              >
-                <polyline
-                  points={zigZagOrder
-                    .map(([x, y]) => `${x * 32 + 16},${y * 32 + 16}`)
-                    .join(' ')}
-                  style={{
-                    fill: 'none',
-                    stroke: 'rgba(255,0,0,0.7)',
-                    strokeWidth: 3,
-                  }}
+            <figure>
+              <div style={{ position: 'relative' }}>
+                <DataTable
+                  data={getQuantizedCoefficients(selectedBlock.data)}
                 />
-              </svg>
+                <svg
+                  viewBox="0 0 256 256"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '256px',
+                    height: '256px',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  <polyline
+                    points={zigZagOrder
+                      .map(([x, y]) => `${x * 33 + 16},${y * 33 + 16}`)
+                      .join(' ')}
+                    style={{
+                      fill: 'none',
+                      stroke: 'rgba(255,0,0,0.7)',
+                      strokeWidth: 3,
+                    }}
+                  />
+                </svg>
+              </div>
               <figcaption>Quantized DCT Coefficients</figcaption>
             </figure>
           </div>

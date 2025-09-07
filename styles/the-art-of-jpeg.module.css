@@ -95,6 +95,9 @@
 
 .dctSection figure {
   image-rendering: pixelated;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dctSection figure img {
