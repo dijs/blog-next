@@ -13,8 +13,11 @@ export default function PostContainer({
   slug,
   number,
   children,
+  skipMathJax = false,
 }) {
   useEffect(() => {
+    if (skipMathJax) return;
+
     // Add MathJax config and script only on client-side after hydration
     const script = document.createElement('script');
     script.type = 'text/javascript';

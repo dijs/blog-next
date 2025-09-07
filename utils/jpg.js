@@ -305,45 +305,6 @@ export function getPresenceCoefficients(selectedData) {
   return coefficients.map((row) => row.map(Math.round));
 }
 
-export function drawPresenceTable(selectedData) {
-  // selectedData is a 2D array of numbers indicating luminance
-  const coefficients = dct2D(selectedData);
-
-  if (coefficients.length < 8 || coefficients[0].length < 8) {
-    return null;
-  }
-
-  const blockSize = 32;
-  const canvas = document.createElement('canvas');
-  canvas.width = blockSize * 8;
-  canvas.height = blockSize * 8;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = 'white';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = 'black';
-  ctx.lineWidth = 1;
-
-  for (let u = 0; u < 8; u++) {
-    for (let v = 0; v < 8; v++) {
-      const startX = u * blockSize;
-      const startY = v * blockSize;
-
-      // Draw the square
-      ctx.strokeRect(startX, startY, blockSize, blockSize);
-
-      // Draw the coefficient value
-      const coeff = Math.round(coefficients[u][v]);
-      ctx.fillStyle = 'black';
-      ctx.font = '16px Arial';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(coeff, startX + blockSize / 2, startY + blockSize / 2);
-    }
-  }
-
-  return canvas.toDataURL();
-}
-
 export const quantTable = [
   [16, 11, 10, 16, 24, 40, 51, 61],
   [12, 12, 14, 19, 26, 58, 60, 55],
@@ -422,38 +383,6 @@ export const zigZagOrder = [
   [7, 7],
 ];
 
-export function drawStaticQuantizationTable() {
-  const blockSize = 32;
-  const canvas = document.createElement('canvas');
-  canvas.width = blockSize * 8;
-  canvas.height = blockSize * 8;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = 'white';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = 'black';
-  ctx.lineWidth = 1;
-
-  for (let u = 0; u < 8; u++) {
-    for (let v = 0; v < 8; v++) {
-      const startX = u * blockSize;
-      const startY = v * blockSize;
-
-      // Draw the square
-      ctx.strokeRect(startX, startY, blockSize, blockSize);
-
-      // Draw the quantization value
-      const value = quantTable[u][v];
-      ctx.fillStyle = 'black';
-      ctx.font = '16px Arial';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(value, startX + blockSize / 2, startY + blockSize / 2);
-    }
-  }
-
-  return canvas.toDataURL();
-}
-
 export function getQuantizedCoefficients(selectedData, quality = 50) {
   const coefficients = dct2D(selectedData);
 
@@ -469,60 +398,6 @@ export function getQuantizedCoefficients(selectedData, quality = 50) {
   return coefficients.map((row, u) =>
     row.map((value, v) => Math.round(value / scaledQuantTable[u][v]))
   );
-}
-
-export function drawQuantizedTable(selectedData, quality = 50) {
-  const coefficients = getQuantizedCoefficients(selectedData, quality);
-
-  if (coefficients.length < 8 || coefficients[0].length < 8) {
-    return null;
-  }
-
-  const blockSize = 32;
-  const canvas = document.createElement('canvas');
-  canvas.width = blockSize * 8;
-  canvas.height = blockSize * 8;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = 'white';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = 'black';
-  ctx.lineWidth = 1;
-
-  for (let u = 0; u < 8; u++) {
-    for (let v = 0; v < 8; v++) {
-      const startX = u * blockSize;
-      const startY = v * blockSize;
-
-      // Draw the square
-      ctx.strokeRect(startX, startY, blockSize, blockSize);
-
-      // Draw the quantized coefficient value
-      const coeff = coefficients[u][v];
-      ctx.fillStyle = 'black';
-      ctx.font = '16px Arial';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(coeff, startX + blockSize / 2, startY + blockSize / 2);
-    }
-  }
-
-  // render zig-zag order with transparent red line overlay
-  ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  for (let k = 0; k < zigZagOrder.length; k++) {
-    const [u, v] = zigZagOrder[k];
-    const x = u * blockSize + blockSize / 2;
-    const y = v * blockSize + blockSize / 2;
-    if (k === 0) {
-      ctx.moveTo(x, y);
-    } else {
-      ctx.lineTo(x, y);
-    }
-  }
-  ctx.stroke();
-
-  return canvas.toDataURL();
 }
 
 export function getOrderedData(selectedData) {

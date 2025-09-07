@@ -10,9 +10,6 @@ import {
   drawGridOverlayToCanvas,
   drawZoomedBlockToCanvas,
   drawFrequencyPatternTable,
-  drawPresenceTable,
-  drawStaticQuantizationTable,
-  drawQuantizedTable,
   getOrderedData,
   huffmanEncode,
   quantTable,
@@ -83,13 +80,8 @@ export default function ArtOfJPEG() {
   const [freqPatternImgData, setFreqPatternImgData] = useState(null);
   const [selectedBlock, setSelectedBlock] = useState({ url: '', data: [] });
 
-  // const [presenceImgData, setPresenceImgData] = useState(null);
-  // const [staticQuantData, setStaticQuantData] = useState(null);
-  const [quantizedData, setQuantizedData] = useState(null);
-
   useEffect(() => {
     setFreqPatternImgData(drawFrequencyPatternTable());
-    // setStaticQuantData(drawStaticQuantizationTable());
   }, []);
 
   async function processImage() {
@@ -134,20 +126,11 @@ export default function ArtOfJPEG() {
   }
 
   useEffect(() => {
-    if (imgRef.current) {
-      processImage();
-    }
-  }, [
-    imgRef.current,
-    colorChannelThreshold,
-    colorChannelAmplify,
-    subsampleAmount,
-  ]);
+    processImage();
+  }, [colorChannelThreshold, colorChannelAmplify, subsampleAmount]);
 
   function updateZoomImage(event) {
     setSelectedBlock(drawZoomedBlockToCanvas(event));
-    // setQuantizedData(drawQuantizedTable(selectedBlock.data));
-    // setPresenceImgData(drawPresenceTable(selectedBlock.data));
   }
 
   return (
@@ -162,6 +145,7 @@ export default function ArtOfJPEG() {
       }}
       slug="the-art-of-jpeg"
       number={73}
+      skipMathJax
     >
       <div className={styles.root}>
         <div className={styles.intro}>
