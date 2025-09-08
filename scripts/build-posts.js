@@ -19,9 +19,10 @@ const manualPosts = [
       blurb: 'An exploration of the JPEG image format.',
       layout: 'post',
       tags: ['jpeg', 'image', 'format', 'history', 'technology'],
-      date: 'Sep 5, 2025',
+      date: 'Sep 7, 2025',
     },
     content: '',
+    isStaticRoute: true,
   },
 ];
 

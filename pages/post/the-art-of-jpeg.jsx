@@ -63,8 +63,8 @@ export default function ArtOfJPEG() {
   const [fileSize, setFileSize] = useState(0);
   const [uniqueColors, setUniqueColors] = useState(0);
 
-  const [colorChannelThreshold, setColorChannelThreshold] = useState(120);
-  const [colorChannelAmplify, setColorChannelAmplify] = useState(3);
+  const [colorChannelThreshold, setColorChannelThreshold] = useState(0);
+  const [colorChannelAmplify, setColorChannelAmplify] = useState(1);
 
   const yImgRef = useRef(null);
   const cbImgRef = useRef(null);
@@ -141,7 +141,7 @@ export default function ArtOfJPEG() {
         blurb: 'An exploration of the JPEG image format.',
         layout: 'post',
         tags: ['jpeg', 'image', 'format', 'history', 'technology'],
-        date: 'Sep 5, 2025',
+        date: 'Sep 7, 2025',
       }}
       slug="the-art-of-jpeg"
       number={73}
@@ -340,7 +340,7 @@ export default function ArtOfJPEG() {
                       .join(' ')}
                     style={{
                       fill: 'none',
-                      stroke: 'rgba(255,0,0,0.7)',
+                      stroke: 'rgba(255,0,0,0.3)',
                       strokeWidth: 3,
                     }}
                   />

@@ -31,11 +31,13 @@ export async function getStaticProps(ctx) {
 
 export async function getStaticPaths() {
   return {
-    paths: buildPosts().map(({ slug }) => ({
-      params: {
-        slug,
-      },
-    })),
+    paths: buildPosts()
+      .filter(({ isStaticRoute }) => !isStaticRoute)
+      .map(({ slug }) => ({
+        params: {
+          slug,
+        },
+      })),
     fallback: false,
   };
 }

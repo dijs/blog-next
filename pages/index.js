@@ -51,8 +51,6 @@ export default function Home({ posts }) {
 export async function getStaticProps() {
   const posts = await buildPosts();
 
-  console.log(posts);
-
   // Add number
   posts.forEach((post, index, arr) => {
     post.number = arr.length - index;
