@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import metadataParser from 'parse-md';
 import dateFns from 'date-fns';
+import { fiMetadata } from '../utils/fi';
 
 const slug = (text) =>
   text
@@ -12,6 +13,11 @@ const slug = (text) =>
     .replace(/^-+|-+$/g, ''); // remove leading, trailing -
 
 const manualPosts = [
+  {
+    metadata: { ...fiMetadata },
+    content: '',
+    isStaticRoute: true,
+  },
   {
     metadata: {
       published: true,

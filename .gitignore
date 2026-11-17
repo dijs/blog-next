@@ -29,5 +29,6 @@ src/posts.json
 .vscode
 
 .next
+.next-dev
 
 out
