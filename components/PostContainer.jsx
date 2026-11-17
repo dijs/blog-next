@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Head from 'next/head';
-import Script from 'next/script';
 import rehypeRaw from 'rehype-raw';
 
 import Header from './Header';
 import Back from './Back';
+import Comments from './Comments';
 
 export default function PostContainer({
   metadata: { title = '', date = '', blurb = '' } = {},
@@ -77,14 +77,7 @@ export default function PostContainer({
           </main>
         )}
         {children}
-        <Script
-          src="https://utteranc.es/client.js"
-          repo="dijs/blog-next"
-          issue-term="pathname"
-          theme="github-light"
-          crossOrigin="anonymous"
-          async
-        />
+        <Comments slug={slug} />
       </article>
       <Back />
     </div>

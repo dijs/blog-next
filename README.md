@@ -1,3 +1,3 @@
 # The Next Blog
 
-More coming soon...
+See [COMMENTS.md](COMMENTS.md) for Firebase comment setup, sign-in providers, migration, and tests.

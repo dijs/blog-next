@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /posts/{slug}/comments/{commentId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'google.com'
+        && slug.matches('^[a-z0-9-]+$')
+        && request.resource.data.keys().hasAll(['authorId', 'authorName', 'photoURL', 'gravatarHash', 'body', 'createdAt'])
+        && request.resource.data.keys().hasOnly(['authorId', 'authorName', 'photoURL', 'gravatarHash', 'body', 'createdAt'])
+        && request.resource.data.authorId == request.auth.uid
+        && request.resource.data.authorName == request.auth.token.get('name', 'Reader')
+        && request.resource.data.photoURL == request.auth.token.get('picture', '')
+        && request.resource.data.gravatarHash is string
+        && (request.resource.data.gravatarHash == '' || request.resource.data.gravatarHash.matches('^[a-f0-9]{64}$'))
+        && request.resource.data.body is string
+        && request.resource.data.body.matches('[\\s\\S]*[^\\s][\\s\\S]*')
+        && request.resource.data.body.size() <= 5000
+        && request.resource.data.createdAt == request.time;
+      allow update, delete: if false;
+    }
+  }
+}

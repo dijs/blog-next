@@ -1,0 +1,19 @@
+.root { box-sizing: border-box; width: min(960px, 90%); margin: 40px auto; border-top: 1px solid #ded6da; padding-top: 24px; color: #29252a; line-height: 1.6; }
+.root h2 { font-family: Georgia, serif; font-size: 26px; }
+.list { list-style: none; padding: 0; margin: 24px 0; }
+.comment { display: flex; gap: 14px; padding: 20px 0; border-bottom: 1px solid #eee7eb; }
+.avatar { flex: 0 0 40px; width: 40px; height: 40px; border-radius: 50%; background: #f5e6ec; color: #913451; display: inline-flex; align-items: center; justify-content: center; object-fit: cover; font-size: 14px; }
+.commentContent { min-width: 0; flex: 1; }
+.byline { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 16px; }
+.byline time { color: #766b72; font-size: 12px; }
+.commentContent p { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.form { display: flex; flex-direction: column; gap: 12px; }
+.form label { font-weight: 600; }
+.form textarea { box-sizing: border-box; width: 100%; resize: vertical; padding: 12px; border: 1px solid #c7bdc3; border-radius: 4px; font: inherit; }
+.actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.actions span { font-size: 13px; color: #665b62; }
+.root button { font: inherit; font-size: 14px; cursor: pointer; border: 1px solid #a73d63; border-radius: 3px; padding: 9px 14px; background: #a73d63; color: white; }
+.root button:disabled { cursor: default; opacity: 0.6; }
+.root .secondary { background: white; color: #913451; }
+.root button:focus-visible, .form textarea:focus-visible { outline: 3px solid #28796c; outline-offset: 3px; }
+.notice { font-size: 14px; color: #28796c; margin: 0; }
