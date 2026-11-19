@@ -1,0 +1,14 @@
+TINY SWORDS TERRAIN
+Source: Tiny Swords (Free Pack), supplied by the project owner.
+Pack page: https://pixelfrog-assets.itch.io/tiny-swords
+Artwork: Pixel Frog.
+Imported: Tilemap_color2.png, Rock1-4.png, Bushe1-4.png.
+Original artwork and filenames are preserved.
+Usage terms: https://pixelfrog-assets.itch.io/tiny-swords (checked 2026-11-09).
+The author permits use and modification in personal and commercial projects.
+Credit is optional. Redistribution, resale, or repackaging of the assets is prohibited.
+The supplied download has no standalone license file; original terms still apply.
+See TERRAIN.md for source rectangles, scale, and ground anchors.
+
+Campaign buildings: original Blue/Black House1, House2, Tower and Castle PNGs
+from the same project-owner-supplied Tiny Swords (Free Pack).
