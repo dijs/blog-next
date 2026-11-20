@@ -230,6 +230,27 @@ article + .back {
 
 .content {
   width: 60%;
+  .watchface-description {
+    display: flow-root;
+    margin: 29px 0;
+
+    p:first-of-type {
+      margin-top: 0;
+    }
+  }
+  .watchface-screenshot {
+    float: left;
+    width: 200px;
+    max-width: 40%;
+    margin: 0 20px 12px 0;
+    background: none;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
   p {
     margin-top: 29px;
     font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman',
@@ -368,6 +389,12 @@ td img {
 }
 
 @media only screen and (max-width: 500px) {
+  .content .watchface-screenshot {
+    float: none;
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 16px;
+  }
   .header {
     padding: 24px 24px 16px 24px;
   }
