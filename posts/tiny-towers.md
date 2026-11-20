@@ -3,7 +3,7 @@ published: true
 title: Tiny Towers
 blurb: A simple tower defense game for airplane mode
 layout: post
-date: 11/20/2026
+date: 8/7/2026
 ---
 
 I was on an airplane and wanted to play some tower defense to pass the time. I tried opening some older tower defense games and was shocked to find that they were completely unusable without an internet connection. The games were already on my phone, but apparently that wasn't enough.
@@ -47,5 +47,17 @@ Honestly, offline play feels like a strange thing to call a feature. I would hav
 I wanted a small game I could have on my phone and actually play when I had some time. On a flight, somewhere with terrible reception, or just sitting on the couch.
 
 Tiny Towers is my attempt at that. Build some towers, see how long the castle holds, and try again when it falls. I'm looking forward to having it with me on the next flight.
+
+## Trying to get on the App Store
+
+Once I was happy with the game, I went through my usual release process. Archived it, tested it through TestFlight, and submitted it to the iOS App Store.
+
+Then I waited. An entire month!
+
+After all that waiting, it was rejected. The message was brief and essentially said: my app was too similar to other games already on the App Store. That didn't give me much to work with.
+
+I was pretty disappointed. I had made a game I enjoyed playing and wanted to share it. I tried submitting it a couple more times, but it was rejected every time.
+
+So, no App Store release for now. Sad.
 
 [Play Tiny Towers in your browser](/tiny-towers/index.html).
